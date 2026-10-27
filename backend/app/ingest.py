@@ -42,6 +42,7 @@ class Chunk:
     section: str
     text: str
     page: int | None = None
+    kind: str = "text"  # "text" for body chunks, "card" for the per-document metadata card
 
     def embedding_text(self) -> str:
         # Prefixing the document and section titles gives each chunk the context
@@ -174,6 +175,25 @@ def chunk_document(doc: Document, size: int = 1200, overlap: int = 200) -> list[
     return chunks
 
 
+CARD_FIELDS = ("Title", "Author", "Sponsor", "PEP-Delegate", "Status", "Type", "Topic", "Created", "Python-Version")
+
+
+def document_card(doc: Document) -> Chunk | None:
+    """One searchable chunk per document holding its header fields (authors, delegate,
+    status, dates). Body chunks never contain these, so without a card questions like
+    "who wrote X?" cannot be answered from retrieval."""
+    lines = []
+    for name in CARD_FIELDS:
+        value = doc.metadata.get(name)
+        if value:
+            # Drop email addresses: names are what users ask about.
+            value = re.sub(r"\s*<[^>]*>", "", value).strip()
+            lines.append(f"{name}: {value}")
+    if len(lines) < 2:
+        return None
+    return Chunk(f"{doc.doc_id}#card", doc.doc_id, doc.title, "Document metadata", "\n".join(lines), kind="card")
+
+
 def load_corpus(corpus_dir: Path) -> list[Document]:
     paths = sorted(p for p in corpus_dir.rglob("*") if p.suffix.lower() in SUPPORTED_SUFFIXES)
     return [load_document(p) for p in paths]
@@ -228,23 +248,41 @@ def write_metadata_db(docs: list[Document], db_path: Path) -> None:
     tmp.replace(db_path)
 
 
-def ingest(corpus_dir: Path, store, embedder, db_path: Path, size: int, overlap: int, recreate: bool = False) -> dict:
-    """Index a corpus. Returns counts and timing so the caller can log them."""
+def ingest(
+    corpus_dir: Path,
+    store,
+    embedder,
+    db_path: Path,
+    size: int,
+    overlap: int,
+    recreate: bool = False,
+    sparse=None,
+) -> dict:
+    """Index a corpus: body chunks plus one metadata card per document, with dense and
+    (when a sparse embedder is given) BM25 vectors. Returns counts and timing."""
     started = time.perf_counter()
     docs = load_corpus(corpus_dir)
     if not docs:
         raise RuntimeError(f"No supported documents in {corpus_dir}")
     chunks = [c for doc in docs for c in chunk_document(doc, size, overlap)]
+    cards = [card for doc in docs if (card := document_card(doc))]
+    everything = chunks + cards
+    texts = [c.embedding_text() for c in everything]
     store.ensure_collection(embedder.dim, recreate=recreate)
-    vectors = embedder.embed_documents([c.embedding_text() for c in chunks])
-    store.upsert(chunks, vectors)
+    sparse_vectors = sparse.embed_documents(texts) if sparse else None
+    store.upsert(everything, embedder.embed_documents(texts), sparse_vectors)
     write_metadata_db(docs, db_path)
-    return {"documents": len(docs), "chunks": len(chunks), "seconds": round(time.perf_counter() - started, 1)}
+    return {
+        "documents": len(docs),
+        "chunks": len(chunks),
+        "cards": len(cards),
+        "seconds": round(time.perf_counter() - started, 1),
+    }
 
 
 def main() -> None:
     from app.config import get_settings
-    from app.retrieval import build_embedder, build_store
+    from app.retrieval import build_embedder, build_sparse_embedder, build_store
 
     settings = get_settings()
     parser = argparse.ArgumentParser(description="Index the corpus into the vector store.")
@@ -260,8 +298,12 @@ def main() -> None:
         settings.chunk_size,
         settings.chunk_overlap,
         recreate=args.recreate,
+        sparse=build_sparse_embedder(settings),
     )
-    print(f"Indexed {stats['documents']} documents as {stats['chunks']} chunks in {stats['seconds']}s")
+    print(
+        f"Indexed {stats['documents']} documents as {stats['chunks']} chunks "
+        f"+ {stats['cards']} metadata cards in {stats['seconds']}s"
+    )
 
 
 if __name__ == "__main__":

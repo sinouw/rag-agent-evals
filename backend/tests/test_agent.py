@@ -92,8 +92,11 @@ async def test_trace_records_llm_tool_and_retrieval_spans(indexed, tracing):
     root = next(s for s in spans if s["name"] == "agent.run")
     assert root["parent_id"] is None
     assert root["attributes"]["gen_ai.usage.output_tokens"] == 20
+    tool = next(s for s in spans if s["name"] == "tool.search_docs")
+    assert json.loads(tool["attributes"]["retrieval.results"])
     search = next(s for s in spans if s["name"] == "retrieval.vector_search")
-    assert json.loads(search["attributes"]["retrieval.results"])
+    assert search["parent_id"] == tool["span_id"]
+    assert search["attributes"]["retrieval.mode"] == "dense"
     assert all(s["trace_id"] == root["trace_id"] for s in spans)
 
 
@@ -122,3 +125,12 @@ def test_fullwidth_citation_brackets_are_normalized():
     from app.agent import normalize_citations
 
     assert extract_citation_labels(normalize_citations("Raises ValueError【S1】 and 【S2, S3】.")) == ["S1", "S2", "S3"]
+
+
+def test_error_messages_redact_account_ids():
+    from app.agent import redact
+
+    assert (
+        redact("limit for organization `org_01ke5hsxa5fqram6` reached")
+        == "limit for organization `[redacted-id]` reached"
+    )

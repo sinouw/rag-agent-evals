@@ -36,6 +36,11 @@ class Settings(BaseSettings):
     qdrant_path: Path = REPO_ROOT / "data" / "qdrant"
     collection: str = "docs"
     top_k: int = 5
+    retrieval_mode: str = "hybrid"  # dense | hybrid (dense + BM25 fused with RRF)
+    retrieval_cards: bool = True  # search the per-document metadata cards too
+    rerank: bool = False  # re-score candidates with a local cross-encoder
+    rerank_model: str = "Xenova/ms-marco-MiniLM-L-6-v2"
+    rerank_candidates: int = 20
     chunk_size: int = 1200
     chunk_overlap: int = 200
 

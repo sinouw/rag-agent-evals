@@ -81,7 +81,8 @@ def test_pdf_pages_become_chunks_with_page_numbers(tmp_path: Path):
 def test_ingest_builds_index_and_metadata(indexed):
     retriever, sql, stats = indexed
     assert stats["documents"] == 3
-    assert retriever.store.count() == stats["chunks"]
+    assert stats["cards"] == 3
+    assert retriever.store.count() == stats["chunks"] + stats["cards"]
     result = sql.run("SELECT pep_number, python_version FROM documents ORDER BY pep_number")
     assert result.data["rows"] == [[8, None], [572, "3.8"], [618, "3.10"]]
 
@@ -90,5 +91,7 @@ def test_reingest_is_idempotent(indexed, corpus, tmp_path):
     from app.ingest import ingest
 
     retriever, _, stats = indexed
-    ingest(corpus, retriever.store, retriever.embedder, tmp_path / "m2.db", size=1200, overlap=200)
-    assert retriever.store.count() == stats["chunks"]
+    ingest(
+        corpus, retriever.store, retriever.embedder, tmp_path / "m2.db", size=1200, overlap=200, sparse=retriever.sparse
+    )
+    assert retriever.store.count() == stats["chunks"] + stats["cards"]

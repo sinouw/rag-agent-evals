@@ -6,7 +6,7 @@ import pytest
 from qdrant_client import QdrantClient
 
 from app.ingest import ingest
-from app.retrieval import HashEmbedder, Retriever, VectorStore
+from app.retrieval import HashEmbedder, HashSparseEmbedder, OverlapReranker, Retriever, VectorStore
 from app.tools import SqlTool
 from app.tracing import Tracing
 
@@ -28,8 +28,9 @@ def indexed(corpus: Path, tmp_path: Path):
     embedder = HashEmbedder()
     store = VectorStore(QdrantClient(":memory:"), "test")
     db = tmp_path / "metadata.db"
-    stats = ingest(corpus, store, embedder, db, size=1200, overlap=200)
-    return Retriever(embedder, store, top_k=5), SqlTool(db), stats
+    sparse = HashSparseEmbedder()
+    stats = ingest(corpus, store, embedder, db, size=1200, overlap=200, sparse=sparse)
+    return Retriever(embedder, store, 5, sparse, OverlapReranker()), SqlTool(db), stats
 
 
 @pytest.fixture

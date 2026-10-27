@@ -22,7 +22,14 @@ from app.agent import Agent
 from app.config import Settings, get_settings
 from app.ingest import ingest
 from app.llm import LLMClient, create_llm
-from app.retrieval import Retriever, build_embedder, build_store
+from app.retrieval import (
+    Retriever,
+    build_embedder,
+    build_reranker,
+    build_sparse_embedder,
+    build_store,
+    retrieval_config,
+)
 from app.tools import SqlTool
 from app.tracing import Tracing
 
@@ -47,13 +54,20 @@ def build_components(settings: Settings, llm: LLMClient | None = None) -> Compon
         settings.service_name, settings.otlp_endpoint, settings.trace_log_path, settings.trace_capture_content
     )
     embedder = build_embedder(settings)
+    sparse = build_sparse_embedder(settings)
     store = build_store(settings)
     if settings.auto_ingest and (store.count() == 0 or not settings.sqlite_path.exists()):
         stats = ingest(
-            settings.corpus_dir, store, embedder, settings.sqlite_path, settings.chunk_size, settings.chunk_overlap
+            settings.corpus_dir,
+            store,
+            embedder,
+            settings.sqlite_path,
+            settings.chunk_size,
+            settings.chunk_overlap,
+            sparse=sparse,
         )
-        log.warning("Indexed %(documents)s documents as %(chunks)s chunks in %(seconds)ss", stats)
-    retriever = Retriever(embedder, store, settings.top_k)
+        log.warning("Indexed %(documents)s documents: %(chunks)s chunks + %(cards)s cards in %(seconds)ss", stats)
+    retriever = Retriever(embedder, store, settings.top_k, sparse, build_reranker(settings), retrieval_config(settings))
     llm_error = None
     if llm is None:
         try:

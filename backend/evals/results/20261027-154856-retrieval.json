@@ -1,0 +1,872 @@
+{
+  "meta": {
+    "timestamp": "2026-10-27 15:48 UTC",
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "retrieval": "hybrid+cards",
+    "k": 5,
+    "documents": 25,
+    "chunks": 1226,
+    "golden_questions": 65
+  },
+  "retrieval": {
+    "summary": {
+      "questions": 48,
+      "k": 5,
+      "hit_at_1": 0.9583333333333334,
+      "hit_at_3": 1.0,
+      "hit_at_5": 1.0,
+      "mrr": 0.9756944444444445,
+      "recall_at_5": 0.9791666666666666,
+      "evidence_questions": 45,
+      "evidence_hit_at_5": 0.8888888888888888,
+      "evidence_mrr": 0.7248148148148148,
+      "p50_latency_ms": 87.8,
+      "by_difficulty": {
+        "core": {
+          "questions": 23,
+          "k": 5,
+          "hit_at_1": 0.9565217391304348,
+          "hit_at_3": 1.0,
+          "hit_at_5": 1.0,
+          "mrr": 0.9710144927536232,
+          "recall_at_5": 0.9782608695652174,
+          "evidence_questions": 23,
+          "evidence_hit_at_5": 1.0,
+          "evidence_mrr": 0.8840579710144927,
+          "p50_latency_ms": 88.0
+        },
+        "hard": {
+          "questions": 25,
+          "k": 5,
+          "hit_at_1": 0.96,
+          "hit_at_3": 1.0,
+          "hit_at_5": 1.0,
+          "mrr": 0.98,
+          "recall_at_5": 0.98,
+          "evidence_questions": 22,
+          "evidence_hit_at_5": 0.7727272727272727,
+          "evidence_mrr": 0.5583333333333333,
+          "p50_latency_ms": 87.7
+        }
+      }
+    },
+    "rows": [
+      {
+        "id": "q01",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0008",
+          "pep-0008",
+          "pep-0584",
+          "pep-0572",
+          "pep-0618"
+        ],
+        "latency_ms": 107.1
+      },
+      {
+        "id": "q02",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0008",
+          "pep-0008",
+          "pep-0008",
+          "pep-0008",
+          "pep-0008"
+        ],
+        "latency_ms": 96.1
+      },
+      {
+        "id": "q03",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0257",
+          "pep-0257",
+          "pep-0008",
+          "pep-0257",
+          "pep-0008"
+        ],
+        "latency_ms": 76.1
+      },
+      {
+        "id": "q04",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 2,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0343",
+          "pep-0343",
+          "pep-0343",
+          "pep-0343",
+          "pep-0343"
+        ],
+        "latency_ms": 98.1
+      },
+      {
+        "id": "q05",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0618",
+          "pep-0618",
+          "pep-0618",
+          "pep-0618",
+          "pep-0618"
+        ],
+        "latency_ms": 88.9
+      },
+      {
+        "id": "q06",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0020",
+          "pep-0020",
+          "pep-0020",
+          "pep-0257",
+          "pep-0020"
+        ],
+        "latency_ms": 91.7
+      },
+      {
+        "id": "q07",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703"
+        ],
+        "latency_ms": 149.3
+      },
+      {
+        "id": "q08",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0518",
+          "pep-0518",
+          "pep-0518",
+          "pep-0518",
+          "pep-0518"
+        ],
+        "latency_ms": 94.1
+      },
+      {
+        "id": "q09",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0723",
+          "pep-0723",
+          "pep-0723",
+          "pep-0723",
+          "pep-0723"
+        ],
+        "latency_ms": 95.0
+      },
+      {
+        "id": "q10",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0668",
+          "pep-0668",
+          "pep-0668",
+          "pep-0668",
+          "pep-0668"
+        ],
+        "latency_ms": 87.7
+      },
+      {
+        "id": "q11",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0657",
+          "pep-0657",
+          "pep-0657",
+          "pep-0657",
+          "pep-0657"
+        ],
+        "latency_ms": 105.3
+      },
+      {
+        "id": "q12",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0709",
+          "pep-0709",
+          "pep-0709",
+          "pep-0709",
+          "pep-0709"
+        ],
+        "latency_ms": 118.3
+      },
+      {
+        "id": "q13",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0584",
+          "pep-0584",
+          "pep-0584",
+          "pep-0584",
+          "pep-0584"
+        ],
+        "latency_ms": 86.6
+      },
+      {
+        "id": "q14",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0526",
+          "pep-0526",
+          "pep-0526",
+          "pep-0526",
+          "pep-0526"
+        ],
+        "latency_ms": 90.2
+      },
+      {
+        "id": "q15",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 3,
+        "evidence_rank": 3,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0526",
+          "pep-0526",
+          "pep-3107",
+          "pep-0484",
+          "pep-0526"
+        ],
+        "latency_ms": 71.0
+      },
+      {
+        "id": "q16",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0492",
+          "pep-0492",
+          "pep-0492",
+          "pep-0492",
+          "pep-0492"
+        ],
+        "latency_ms": 88.0
+      },
+      {
+        "id": "q17",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 2,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-3333",
+          "pep-3333",
+          "pep-3333",
+          "pep-3333",
+          "pep-3333"
+        ],
+        "latency_ms": 79.9
+      },
+      {
+        "id": "q18",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 2,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0380",
+          "pep-0380",
+          "pep-0380",
+          "pep-0380",
+          "pep-0380"
+        ],
+        "latency_ms": 82.0
+      },
+      {
+        "id": "q19",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703"
+        ],
+        "latency_ms": 83.0
+      },
+      {
+        "id": "q20",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0701",
+          "pep-0701",
+          "pep-0701",
+          "pep-0701",
+          "pep-0701"
+        ],
+        "latency_ms": 87.0
+      },
+      {
+        "id": "q21",
+        "category": "multi_doc",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 2,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-3107",
+          "pep-0484",
+          "pep-3107",
+          "pep-0484",
+          "pep-0008"
+        ],
+        "latency_ms": 62.0
+      },
+      {
+        "id": "q22",
+        "category": "multi_doc",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 0.5,
+        "retrieved": [
+          "pep-0604",
+          "pep-0604",
+          "pep-0604",
+          "pep-0604",
+          "pep-0604"
+        ],
+        "latency_ms": 64.4
+      },
+      {
+        "id": "q27",
+        "category": "calculation",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0008",
+          "pep-0008",
+          "pep-0723",
+          "pep-0008",
+          "pep-0723"
+        ],
+        "latency_ms": 78.9
+      },
+      {
+        "id": "h01",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 4,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0008",
+          "pep-0008",
+          "pep-0008",
+          "pep-0008",
+          "pep-0484"
+        ],
+        "latency_ms": 66.1
+      },
+      {
+        "id": "h02",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0008",
+          "pep-0008",
+          "pep-0008",
+          "pep-0008",
+          "pep-0492"
+        ],
+        "latency_ms": 80.5
+      },
+      {
+        "id": "h03",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0008",
+          "pep-0008",
+          "pep-0008",
+          "pep-0008",
+          "pep-0008"
+        ],
+        "latency_ms": 82.5
+      },
+      {
+        "id": "h04",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0008",
+          "pep-0657",
+          "pep-0008",
+          "pep-0668",
+          "pep-0008"
+        ],
+        "latency_ms": 80.6
+      },
+      {
+        "id": "h05",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 5,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0634",
+          "pep-0634",
+          "pep-0634",
+          "pep-0634",
+          "pep-0634"
+        ],
+        "latency_ms": 87.7
+      },
+      {
+        "id": "h06",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 2,
+        "evidence_rank": 4,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0572",
+          "pep-0634",
+          "pep-0572",
+          "pep-0634",
+          "pep-0572"
+        ],
+        "latency_ms": 95.5
+      },
+      {
+        "id": "h07",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 2,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703"
+        ],
+        "latency_ms": 92.5
+      },
+      {
+        "id": "h08",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 2,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0498",
+          "pep-0498",
+          "pep-0498",
+          "pep-0498",
+          "pep-0498"
+        ],
+        "latency_ms": 78.8
+      },
+      {
+        "id": "h09",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0557",
+          "pep-0557",
+          "pep-0557",
+          "pep-0557",
+          "pep-0557"
+        ],
+        "latency_ms": 86.6
+      },
+      {
+        "id": "h10",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": null,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0492",
+          "pep-0492",
+          "pep-0492",
+          "pep-0492",
+          "pep-0492"
+        ],
+        "latency_ms": 82.6
+      },
+      {
+        "id": "h11",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": null,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-3333",
+          "pep-3333",
+          "pep-3333",
+          "pep-3333",
+          "pep-3333"
+        ],
+        "latency_ms": 93.6
+      },
+      {
+        "id": "h12",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0723",
+          "pep-0723",
+          "pep-0723",
+          "pep-0723",
+          "pep-0723"
+        ],
+        "latency_ms": 94.0
+      },
+      {
+        "id": "h13",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": null,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0380",
+          "pep-0380",
+          "pep-0380",
+          "pep-0695",
+          "pep-0498"
+        ],
+        "latency_ms": 87.7
+      },
+      {
+        "id": "h14",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 4,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0709",
+          "pep-0709",
+          "pep-0709",
+          "pep-0709",
+          "pep-0709"
+        ],
+        "latency_ms": 91.5
+      },
+      {
+        "id": "h15",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 3,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0695",
+          "pep-0695",
+          "pep-0695",
+          "pep-0695",
+          "pep-0695"
+        ],
+        "latency_ms": 97.5
+      },
+      {
+        "id": "h16",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": null,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0657",
+          "pep-0657",
+          "pep-0657",
+          "pep-0657",
+          "pep-0657"
+        ],
+        "latency_ms": 91.1
+      },
+      {
+        "id": "h17",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0257",
+          "pep-0257",
+          "pep-0257",
+          "pep-0257",
+          "pep-0257"
+        ],
+        "latency_ms": 103.5
+      },
+      {
+        "id": "a01",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": null,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0557",
+          "pep-0557",
+          "pep-0557",
+          "pep-0572",
+          "pep-0557"
+        ],
+        "latency_ms": 79.2
+      },
+      {
+        "id": "a02",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0668",
+          "pep-0668",
+          "pep-0668",
+          "pep-0668",
+          "pep-0668"
+        ],
+        "latency_ms": 86.0
+      },
+      {
+        "id": "a03",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703"
+        ],
+        "latency_ms": 83.4
+      },
+      {
+        "id": "a04",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0709",
+          "pep-0709",
+          "pep-0723",
+          "pep-0709",
+          "pep-0709"
+        ],
+        "latency_ms": 89.3
+      },
+      {
+        "id": "a05",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0723",
+          "pep-0723",
+          "pep-0723",
+          "pep-0723",
+          "pep-0723"
+        ],
+        "latency_ms": 101.1
+      },
+      {
+        "id": "x01",
+        "category": "multi_doc",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": null,
+        "has_evidence": false,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-3107",
+          "pep-3107",
+          "pep-0526",
+          "pep-3107",
+          "pep-3107"
+        ],
+        "latency_ms": 79.1
+      },
+      {
+        "id": "x02",
+        "category": "multi_doc",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": null,
+        "has_evidence": false,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0492",
+          "pep-0492",
+          "pep-0492",
+          "pep-0492",
+          "pep-0343"
+        ],
+        "latency_ms": 89.6
+      },
+      {
+        "id": "x03",
+        "category": "multi_doc",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": null,
+        "has_evidence": false,
+        "recall": 0.5,
+        "retrieved": [
+          "pep-0701",
+          "pep-0701",
+          "pep-0701",
+          "pep-0701",
+          "pep-0701"
+        ],
+        "latency_ms": 93.4
+      }
+    ]
+  }
+}

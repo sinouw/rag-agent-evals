@@ -114,3 +114,21 @@ def test_update_readme_replaces_only_the_marked_block(tmp_path):
     assert "pending real run" not in text
     assert "| 100% | 100% | — | — | 900 / 1500 ms | 2000 / 80 | $0.00120 | 0 |" in text
     assert text.startswith("# Title") and text.endswith("## After\n")
+
+
+@pytest.mark.asyncio
+async def test_agent_eval_stops_after_daily_quota_error(indexed, tracing):
+    from app.llm import ScriptedLLM as Base
+
+    class QuotaLLM(Base):
+        async def stream(self, messages, tools=None):
+            raise RuntimeError("Rate limit reached on tokens per day (TPD): Limit 200000")
+            yield  # pragma: no cover
+
+    retriever, sql, _ = indexed
+    agent = Agent(QuotaLLM([]), retriever, sql, tracing, "corpus")
+    items = [GoldenItem(f"q{i}", "lookup", "?", "x", ["pep-0618"]) for i in range(3)]
+    e2e = await agent_eval(agent, ScriptedLLM([]), items)
+    assert e2e["quota_exhausted"] is True
+    assert e2e["rows"][1]["error"] == "skipped: provider daily quota exhausted"
+    assert e2e["summary"]["errors"] == 3

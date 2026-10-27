@@ -130,6 +130,12 @@ class Tracing:
         finally:
             span.end()
 
+    def record(self, name: str, parent: Span, start_ns: int, end_ns: int, **attributes: Any) -> None:
+        """Emit a span for a step that was timed elsewhere (e.g. inside a worker thread)."""
+        ctx = trace.set_span_in_context(parent)
+        span = self.tracer.start_span(name, context=ctx, start_time=start_ns, attributes=_clean(attributes))
+        span.end(end_time=end_ns)
+
     def content(self, value: Any, limit: int = 20_000) -> str | None:
         """Serialize prompt/response content for a span, unless content capture is off."""
         if not self.capture_content:

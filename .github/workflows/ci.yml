@@ -55,28 +55,20 @@ jobs:
 
   agent-eval:
     name: Agent eval (LLM-as-judge)
-    # Runs only where a provider key is configured, and not on pull requests from forks.
+    # Makes real LLM calls: runs only where a provider key secret is configured, never on pull requests.
     needs: retrieval-eval
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: backend
     env:
       GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-      LLM_PROVIDER: ${{ vars.LLM_PROVIDER || 'groq' }}
-      LLM_MODEL: ${{ vars.LLM_MODEL }}
-      JUDGE_PROVIDER: ${{ vars.JUDGE_PROVIDER }}
-      JUDGE_MODEL: ${{ vars.JUDGE_MODEL }}
       FASTEMBED_CACHE_PATH: ${{ github.workspace }}/.cache/fastembed
     steps:
+      - uses: actions/checkout@v4
       - name: Check for an API key
         id: key
         run: |
           if [ -n "$GROQ_API_KEY$GEMINI_API_KEY" ]; then echo "present=true" >> "$GITHUB_OUTPUT"; else echo "No LLM API key secret; skipping."; fi
-      - uses: actions/checkout@v4
-        if: steps.key.outputs.present == 'true'
       - uses: astral-sh/setup-uv@v6
         if: steps.key.outputs.present == 'true'
         with:
@@ -86,12 +78,10 @@ jobs:
         with:
           path: .cache/fastembed
           key: fastembed-bge-small-en-v1.5
+      # Same entry point as local runs; picks a judge model different from the answering model.
+      # Add --min-correctness / --min-faithfulness gates once a baseline from CI exists.
       - if: steps.key.outputs.present == 'true'
-        run: |
-          uv sync --frozen
-          uv run python -m app.ingest
-          # Add --min-correctness / --min-faithfulness gates once a real baseline exists.
-          uv run python -m evals.run --out "$RUNNER_TEMP/eval"
+        run: ./scripts/run-evals.sh --out "$RUNNER_TEMP/eval"
       - uses: actions/upload-artifact@v4
         if: steps.key.outputs.present == 'true' && always()
         with:

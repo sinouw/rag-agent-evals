@@ -1,0 +1,2075 @@
+{
+  "meta": {
+    "timestamp": "2026-10-27 15:25 UTC",
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "retrieval": "hybrid+cards",
+    "k": 5,
+    "documents": 25,
+    "chunks": 1226,
+    "golden_questions": 65,
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "judge": "groq/qwen/qwen3.8-27b",
+    "rate_limited_responses": 106
+  },
+  "retrieval": {
+    "summary": {
+      "questions": 48,
+      "k": 5,
+      "hit_at_1": 0.9583333333333334,
+      "hit_at_3": 1.0,
+      "hit_at_5": 1.0,
+      "mrr": 0.9756944444444445,
+      "recall_at_5": 0.9791666666666666,
+      "evidence_questions": 45,
+      "evidence_hit_at_5": 0.8888888888888888,
+      "evidence_mrr": 0.7248148148148148,
+      "p50_latency_ms": 245.7,
+      "by_difficulty": {
+        "core": {
+          "questions": 23,
+          "k": 5,
+          "hit_at_1": 0.9565217391304348,
+          "hit_at_3": 1.0,
+          "hit_at_5": 1.0,
+          "mrr": 0.9710144927536232,
+          "recall_at_5": 0.9782608695652174,
+          "evidence_questions": 23,
+          "evidence_hit_at_5": 1.0,
+          "evidence_mrr": 0.8840579710144927,
+          "p50_latency_ms": 213.3
+        },
+        "hard": {
+          "questions": 25,
+          "k": 5,
+          "hit_at_1": 0.96,
+          "hit_at_3": 1.0,
+          "hit_at_5": 1.0,
+          "mrr": 0.98,
+          "recall_at_5": 0.98,
+          "evidence_questions": 22,
+          "evidence_hit_at_5": 0.7727272727272727,
+          "evidence_mrr": 0.5583333333333333,
+          "p50_latency_ms": 268.4
+        }
+      }
+    },
+    "rows": [
+      {
+        "id": "q01",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0008",
+          "pep-0008",
+          "pep-0584",
+          "pep-0572",
+          "pep-0618"
+        ],
+        "latency_ms": 227.6
+      },
+      {
+        "id": "q02",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0008",
+          "pep-0008",
+          "pep-0008",
+          "pep-0008",
+          "pep-0008"
+        ],
+        "latency_ms": 385.2
+      },
+      {
+        "id": "q03",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0257",
+          "pep-0257",
+          "pep-0008",
+          "pep-0257",
+          "pep-0008"
+        ],
+        "latency_ms": 185.6
+      },
+      {
+        "id": "q04",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 2,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0343",
+          "pep-0343",
+          "pep-0343",
+          "pep-0343",
+          "pep-0343"
+        ],
+        "latency_ms": 187.6
+      },
+      {
+        "id": "q05",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0618",
+          "pep-0618",
+          "pep-0618",
+          "pep-0618",
+          "pep-0618"
+        ],
+        "latency_ms": 247.8
+      },
+      {
+        "id": "q06",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0020",
+          "pep-0020",
+          "pep-0020",
+          "pep-0257",
+          "pep-0020"
+        ],
+        "latency_ms": 191.5
+      },
+      {
+        "id": "q07",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703"
+        ],
+        "latency_ms": 342.8
+      },
+      {
+        "id": "q08",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0518",
+          "pep-0518",
+          "pep-0518",
+          "pep-0518",
+          "pep-0518"
+        ],
+        "latency_ms": 206.9
+      },
+      {
+        "id": "q09",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0723",
+          "pep-0723",
+          "pep-0723",
+          "pep-0723",
+          "pep-0723"
+        ],
+        "latency_ms": 147.4
+      },
+      {
+        "id": "q10",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0668",
+          "pep-0668",
+          "pep-0668",
+          "pep-0668",
+          "pep-0668"
+        ],
+        "latency_ms": 526.2
+      },
+      {
+        "id": "q11",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0657",
+          "pep-0657",
+          "pep-0657",
+          "pep-0657",
+          "pep-0657"
+        ],
+        "latency_ms": 207.7
+      },
+      {
+        "id": "q12",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0709",
+          "pep-0709",
+          "pep-0709",
+          "pep-0709",
+          "pep-0709"
+        ],
+        "latency_ms": 182.9
+      },
+      {
+        "id": "q13",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0584",
+          "pep-0584",
+          "pep-0584",
+          "pep-0584",
+          "pep-0584"
+        ],
+        "latency_ms": 213.3
+      },
+      {
+        "id": "q14",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0526",
+          "pep-0526",
+          "pep-0526",
+          "pep-0526",
+          "pep-0526"
+        ],
+        "latency_ms": 236.6
+      },
+      {
+        "id": "q15",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 3,
+        "evidence_rank": 3,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0526",
+          "pep-0526",
+          "pep-3107",
+          "pep-0484",
+          "pep-0526"
+        ],
+        "latency_ms": 151.1
+      },
+      {
+        "id": "q16",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0492",
+          "pep-0492",
+          "pep-0492",
+          "pep-0492",
+          "pep-0492"
+        ],
+        "latency_ms": 564.5
+      },
+      {
+        "id": "q17",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 2,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-3333",
+          "pep-3333",
+          "pep-3333",
+          "pep-3333",
+          "pep-3333"
+        ],
+        "latency_ms": 166.6
+      },
+      {
+        "id": "q18",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 2,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0380",
+          "pep-0380",
+          "pep-0380",
+          "pep-0380",
+          "pep-0380"
+        ],
+        "latency_ms": 209.2
+      },
+      {
+        "id": "q19",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703"
+        ],
+        "latency_ms": 183.3
+      },
+      {
+        "id": "q20",
+        "category": "lookup",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0701",
+          "pep-0701",
+          "pep-0701",
+          "pep-0701",
+          "pep-0701"
+        ],
+        "latency_ms": 738.7
+      },
+      {
+        "id": "q21",
+        "category": "multi_doc",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 2,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-3107",
+          "pep-0484",
+          "pep-3107",
+          "pep-0484",
+          "pep-0008"
+        ],
+        "latency_ms": 466.9
+      },
+      {
+        "id": "q22",
+        "category": "multi_doc",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 0.5,
+        "retrieved": [
+          "pep-0604",
+          "pep-0604",
+          "pep-0604",
+          "pep-0604",
+          "pep-0604"
+        ],
+        "latency_ms": 382.3
+      },
+      {
+        "id": "q27",
+        "category": "calculation",
+        "difficulty": "core",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0008",
+          "pep-0008",
+          "pep-0723",
+          "pep-0008",
+          "pep-0723"
+        ],
+        "latency_ms": 404.1
+      },
+      {
+        "id": "h01",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 4,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0008",
+          "pep-0008",
+          "pep-0008",
+          "pep-0008",
+          "pep-0484"
+        ],
+        "latency_ms": 187.8
+      },
+      {
+        "id": "h02",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0008",
+          "pep-0008",
+          "pep-0008",
+          "pep-0008",
+          "pep-0492"
+        ],
+        "latency_ms": 224.9
+      },
+      {
+        "id": "h03",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0008",
+          "pep-0008",
+          "pep-0008",
+          "pep-0008",
+          "pep-0008"
+        ],
+        "latency_ms": 187.6
+      },
+      {
+        "id": "h04",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0008",
+          "pep-0657",
+          "pep-0008",
+          "pep-0668",
+          "pep-0008"
+        ],
+        "latency_ms": 224.2
+      },
+      {
+        "id": "h05",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 5,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0634",
+          "pep-0634",
+          "pep-0634",
+          "pep-0634",
+          "pep-0634"
+        ],
+        "latency_ms": 250.5
+      },
+      {
+        "id": "h06",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 2,
+        "evidence_rank": 4,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0572",
+          "pep-0634",
+          "pep-0572",
+          "pep-0634",
+          "pep-0572"
+        ],
+        "latency_ms": 428.5
+      },
+      {
+        "id": "h07",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 2,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703"
+        ],
+        "latency_ms": 240.6
+      },
+      {
+        "id": "h08",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 2,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0498",
+          "pep-0498",
+          "pep-0498",
+          "pep-0498",
+          "pep-0498"
+        ],
+        "latency_ms": 239.7
+      },
+      {
+        "id": "h09",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0557",
+          "pep-0557",
+          "pep-0557",
+          "pep-0557",
+          "pep-0557"
+        ],
+        "latency_ms": 254.7
+      },
+      {
+        "id": "h10",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": null,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0492",
+          "pep-0492",
+          "pep-0492",
+          "pep-0492",
+          "pep-0492"
+        ],
+        "latency_ms": 240.4
+      },
+      {
+        "id": "h11",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": null,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-3333",
+          "pep-3333",
+          "pep-3333",
+          "pep-3333",
+          "pep-3333"
+        ],
+        "latency_ms": 268.4
+      },
+      {
+        "id": "h12",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0723",
+          "pep-0723",
+          "pep-0723",
+          "pep-0723",
+          "pep-0723"
+        ],
+        "latency_ms": 316.2
+      },
+      {
+        "id": "h13",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": null,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0380",
+          "pep-0380",
+          "pep-0380",
+          "pep-0695",
+          "pep-0498"
+        ],
+        "latency_ms": 273.7
+      },
+      {
+        "id": "h14",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 4,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0709",
+          "pep-0709",
+          "pep-0709",
+          "pep-0709",
+          "pep-0709"
+        ],
+        "latency_ms": 283.6
+      },
+      {
+        "id": "h15",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 3,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0695",
+          "pep-0695",
+          "pep-0695",
+          "pep-0695",
+          "pep-0695"
+        ],
+        "latency_ms": 389.6
+      },
+      {
+        "id": "h16",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": null,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0657",
+          "pep-0657",
+          "pep-0657",
+          "pep-0657",
+          "pep-0657"
+        ],
+        "latency_ms": 369.4
+      },
+      {
+        "id": "h17",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0257",
+          "pep-0257",
+          "pep-0257",
+          "pep-0257",
+          "pep-0257"
+        ],
+        "latency_ms": 342.0
+      },
+      {
+        "id": "a01",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": null,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0557",
+          "pep-0557",
+          "pep-0557",
+          "pep-0572",
+          "pep-0557"
+        ],
+        "latency_ms": 220.5
+      },
+      {
+        "id": "a02",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0668",
+          "pep-0668",
+          "pep-0668",
+          "pep-0668",
+          "pep-0668"
+        ],
+        "latency_ms": 302.6
+      },
+      {
+        "id": "a03",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703"
+        ],
+        "latency_ms": 224.0
+      },
+      {
+        "id": "a04",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0709",
+          "pep-0709",
+          "pep-0723",
+          "pep-0709",
+          "pep-0709"
+        ],
+        "latency_ms": 243.6
+      },
+      {
+        "id": "a05",
+        "category": "lookup",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0723",
+          "pep-0723",
+          "pep-0723",
+          "pep-0723",
+          "pep-0723"
+        ],
+        "latency_ms": 293.9
+      },
+      {
+        "id": "x01",
+        "category": "multi_doc",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": null,
+        "has_evidence": false,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-3107",
+          "pep-3107",
+          "pep-0526",
+          "pep-3107",
+          "pep-3107"
+        ],
+        "latency_ms": 319.1
+      },
+      {
+        "id": "x02",
+        "category": "multi_doc",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": null,
+        "has_evidence": false,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0492",
+          "pep-0492",
+          "pep-0492",
+          "pep-0492",
+          "pep-0343"
+        ],
+        "latency_ms": 303.2
+      },
+      {
+        "id": "x03",
+        "category": "multi_doc",
+        "difficulty": "hard",
+        "rank": 1,
+        "evidence_rank": null,
+        "has_evidence": false,
+        "recall": 0.5,
+        "retrieved": [
+          "pep-0701",
+          "pep-0701",
+          "pep-0701",
+          "pep-0701",
+          "pep-0701"
+        ],
+        "latency_ms": 474.4
+      }
+    ]
+  },
+  "e2e": {
+    "summary": {
+      "questions": 65,
+      "correctness": 0.5538461538461539,
+      "faithfulness": 0.5538461538461539,
+      "citation_precision": 0.9814814814814815,
+      "tool_selection": 0.8571428571428571,
+      "errors": 29,
+      "p50_latency_ms": 9693,
+      "p95_latency_ms": 22967,
+      "avg_input_tokens": 2672,
+      "avg_output_tokens": 260,
+      "avg_cost_usd": 0.0005957166666666666,
+      "total_cost_usd": 0.021445799999999998,
+      "by_category": {
+        "calculation": {
+          "questions": 4,
+          "correctness": 0.75,
+          "faithfulness": 0.75,
+          "citation_precision": 1.0,
+          "tool_selection": 0.6666666666666666
+        },
+        "lookup": {
+          "questions": 42,
+          "correctness": 0.5714285714285714,
+          "faithfulness": 0.5714285714285714,
+          "citation_precision": 0.9791666666666666,
+          "tool_selection": null
+        },
+        "metadata_sql": {
+          "questions": 8,
+          "correctness": 0.5,
+          "faithfulness": 0.5,
+          "citation_precision": null,
+          "tool_selection": 1.0
+        },
+        "multi_doc": {
+          "questions": 5,
+          "correctness": 0.4,
+          "faithfulness": 0.4,
+          "citation_precision": 1.0,
+          "tool_selection": null
+        },
+        "unanswerable": {
+          "questions": 6,
+          "correctness": 0.5,
+          "faithfulness": 0.5,
+          "citation_precision": null,
+          "tool_selection": null
+        }
+      },
+      "by_difficulty": {
+        "core": {
+          "questions": 32,
+          "correctness": 1.0,
+          "faithfulness": 1.0,
+          "citation_precision": 0.9782608695652174,
+          "tool_selection": 0.8571428571428571
+        },
+        "hard": {
+          "questions": 33,
+          "correctness": 0.12121212121212122,
+          "faithfulness": 0.12121212121212122,
+          "citation_precision": 1.0,
+          "tool_selection": null
+        }
+      }
+    },
+    "rows": [
+      {
+        "id": "q01",
+        "category": "lookup",
+        "difficulty": "core",
+        "question": "What maximum line length does PEP 8 recommend for code?",
+        "answer": "PEP\u202f8 recommends limiting all lines of **code** to a maximum of **79 characters**[S1]. (Docstrings and comments have a shorter 72\u2011character limit.)",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the 79-character limit for code as per the reference and context, and accurately notes the 72-character limit for docstrings and comments which is also supported by the retrieved text.",
+        "cited_docs": [
+          "pep-0008"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 1874,
+        "input_tokens": 2069,
+        "output_tokens": 176,
+        "cost_usd": 0.00044235,
+        "judge_cost_usd": null,
+        "trace_id": "ec835ec75915a8c4cf0829e6ebd33462"
+      },
+      {
+        "id": "q02",
+        "category": "lookup",
+        "difficulty": "core",
+        "question": "How many spaces per indentation level does the Python style guide recommend?",
+        "answer": "The Python style guide (PEP\u202f8) recommends using **4 spaces for each indentation level**[S1].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies that the Python style guide recommends 4 spaces per indentation level, which is explicitly supported by the retrieved context [S1].",
+        "cited_docs": [
+          "pep-0008"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 1605,
+        "input_tokens": 2076,
+        "output_tokens": 156,
+        "cost_usd": 0.00042839999999999995,
+        "judge_cost_usd": null,
+        "trace_id": "ebee2795755dc427ab1097b38dc83820"
+      },
+      {
+        "id": "q03",
+        "category": "lookup",
+        "difficulty": "core",
+        "question": "Which quoting style should be used around docstrings?",
+        "answer": "Use **triple double\u2011quote** literals for docstrings (e.g. `\"\"\"docstring\"\"\"`).\u202fPEP\u202f257 explicitly recommends always using `\"\"\"triple double quotes\"\"\"` for docstrings, and PEP\u202f8 notes that triple\u2011quoted strings should use double quotes to stay consistent with that convention. If a docstring contains backslashes, a raw triple\u2011double\u2011quoted string (`r\"\"\"\u2026\"\"\"`) may be used.\u202f[S2][S1]",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies triple double quotes as the standard and raw triple double quotes for backslashes, which aligns with the reference answer and is fully supported by the retrieved context from PEP 257 and PEP 8.",
+        "cited_docs": [
+          "pep-0257",
+          "pep-0008"
+        ],
+        "citation_precision": 0.5,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 1970,
+        "input_tokens": 1754,
+        "output_tokens": 295,
+        "cost_usd": 0.00048435,
+        "judge_cost_usd": null,
+        "trace_id": "5fe095aeb0534e71e45ac242e78b312d"
+      },
+      {
+        "id": "q04",
+        "category": "lookup",
+        "difficulty": "core",
+        "question": "Which two methods must a context manager provide to be used with the with statement?",
+        "answer": "A context manager must implement the two special methods **`__enter__()`** and **`__exit__()`**; these are called when entering and leaving the body of a `with` statement\u202f[\u200bS1][\u200bS2].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the two required methods as __enter__() and __exit__(), which is explicitly supported by the provided context in sources [S1] and [S2].",
+        "cited_docs": [
+          "pep-0343",
+          "pep-0343"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 3684,
+        "input_tokens": 2221,
+        "output_tokens": 163,
+        "cost_usd": 0.00045539999999999996,
+        "judge_cost_usd": null,
+        "trace_id": "f6472672621c4408e811c39d8d39d611"
+      },
+      {
+        "id": "q05",
+        "category": "lookup",
+        "difficulty": "core",
+        "question": "What happens when zip() is called with strict=True and the iterables have different lengths?",
+        "answer": "When `zip(..., strict=True)` is used, the iterator checks that all arguments finish at the same time. If any iterable is shorter (or longer) than the others, iteration stops and a **`ValueError`** is raised at the point where the lengths diverge\u202f\u2014\u202fthe error message indicates which argument is shorter or longer\u202f[S1].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies that a ValueError is raised, which matches the reference answer, and all specific details about the error message and timing are supported by the provided context (specifically S1 and S3).",
+        "cited_docs": [
+          "pep-0618"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 1436,
+        "input_tokens": 2046,
+        "output_tokens": 228,
+        "cost_usd": 0.00047789999999999996,
+        "judge_cost_usd": null,
+        "trace_id": "0784dc48493f50e3331271cc1cd37780"
+      },
+      {
+        "id": "q06",
+        "category": "lookup",
+        "difficulty": "core",
+        "question": "How many aphorisms does the Zen of Python say Tim Peters channelled, and how many were written down?",
+        "answer": "Tim\u202fPeters \u201cchanneled\u201d **20 aphorisms** for the Zen of Python, but **only 19 of them have been written down**[S1].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the number of aphorisms (20) and the number written down (19), which matches the reference answer and is directly supported by the text in context [S1].",
+        "cited_docs": [
+          "pep-0020"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 2798,
+        "input_tokens": 2425,
+        "output_tokens": 256,
+        "cost_usd": 0.00055575,
+        "judge_cost_usd": null,
+        "trace_id": "c793212228a28b9f2cc81bfa96a5b017"
+      },
+      {
+        "id": "q07",
+        "category": "lookup",
+        "difficulty": "core",
+        "question": "Which configure option builds CPython without the global interpreter lock?",
+        "answer": "The configure flag that builds CPython without the Global Interpreter Lock is:\n\n**`--disable-gil`**  \n\nWhen this option is passed to the `configure` script, CPython is built with the GIL disabled and defines the `Py_GIL_DISABLED` macro\u202f[S1][S2].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the `--disable-gil` flag and the `Py_GIL_DISABLED` macro, both of which are explicitly supported by the provided context documents [S1] and [S2].",
+        "cited_docs": [
+          "pep-0703",
+          "pep-0703"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 8021,
+        "input_tokens": 1832,
+        "output_tokens": 201,
+        "cost_usd": 0.00042555,
+        "judge_cost_usd": null,
+        "trace_id": "c598ba708348608f60bf8a8c9c3578ea"
+      },
+      {
+        "id": "q08",
+        "category": "lookup",
+        "difficulty": "core",
+        "question": "Which table in pyproject.toml stores build-system requirements, and which key is required in it?",
+        "answer": "The **`[build-system]`** table stores the build\u2011system requirements, and it must contain the **`requires`** key (a list of PEP\u202f508 dependency strings)[S2].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the [build-system] table and the required 'requires' key, and the description of the key as a list of PEP 508 dependency strings is directly supported by context [S2].",
+        "cited_docs": [
+          "pep-0518"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 22621,
+        "input_tokens": 2147,
+        "output_tokens": 183,
+        "cost_usd": 0.0004593,
+        "judge_cost_usd": null,
+        "trace_id": "8de088af31e6804f676dd90aef95f0dd"
+      },
+      {
+        "id": "q09",
+        "category": "lookup",
+        "difficulty": "core",
+        "question": "How does a single-file script mark the start and end of its inline metadata block?",
+        "answer": "A single\u2011file script marks an inline metadata block with a **starting line** that begins with a single hash, a space, three forward slashes, another space, and the metadata type (e.g. `# /// script`). The block is closed with an **ending line** that is just a single hash, a space, and three forward slashes (`# ///`).\u202fAll lines in between must be comments.\u202f[S3]",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the start line format (`# /// TYPE`) and end line format (`# ///`) as well as the requirement for intermediate lines to be comments, which aligns perfectly with the reference answer and is fully supported by the provided context (specifically S3 and S10).",
+        "cited_docs": [
+          "pep-0723"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 9693,
+        "input_tokens": 2974,
+        "output_tokens": 328,
+        "cost_usd": 0.0006920999999999999,
+        "judge_cost_usd": null,
+        "trace_id": "59a62061bdbca1b02dc1c735d9684c26"
+      },
+      {
+        "id": "q10",
+        "category": "lookup",
+        "difficulty": "core",
+        "question": "What file marks a Python installation as externally managed so that pip refuses to install into it?",
+        "answer": "The presence of a file named **`EXTERNALLY-MANAGED`** in the interpreter\u2019s standard\u2011library directory marks the installation as externally managed, causing pip to refuse installing packages into it[S1].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the file name as EXTERNALLY-MANAGED and accurately describes its location and effect based on the provided context.",
+        "cited_docs": [
+          "pep-0668"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 3818,
+        "input_tokens": 2191,
+        "output_tokens": 235,
+        "cost_usd": 0.0005049,
+        "judge_cost_usd": null,
+        "trace_id": "4b621537099aa73818d5985c7bfc8842"
+      },
+      {
+        "id": "q11",
+        "category": "lookup",
+        "difficulty": "core",
+        "question": "Which command-line option disables the extra position information that fine-grained error locations add to tracebacks?",
+        "answer": "The extra position information can be turned off with the dev\u2011mode flag:\n\n**`python -Xno_debug_ranges`**  \n\nThis command\u2011line option disables the fine\u2011grained error\u2011location data that would otherwise be shown in tracebacks[S2].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the command-line option `python -Xno_debug_ranges` as specified in the reference and supported by context [S2], and accurately describes its function of disabling fine-grained error location data in tracebacks.",
+        "cited_docs": [
+          "pep-0657"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 11771,
+        "input_tokens": 1918,
+        "output_tokens": 248,
+        "cost_usd": 0.00047369999999999997,
+        "judge_cost_usd": null,
+        "trace_id": "ac90b516ae36aa9ee2afbe94f5d5115e"
+      },
+      {
+        "id": "q12",
+        "category": "lookup",
+        "difficulty": "core",
+        "question": "How much faster did inlining comprehensions make a comprehension microbenchmark and a real-world-derived benchmark?",
+        "answer": "Inlining comprehensions made the micro\u2011benchmark roughly **2\u202f\u00d7 faster** (the reference implementation measured a 1.96\u00d7 speed\u2011up) and gave about an **11\u202f% speed\u2011up** on a real\u2011world\u2011derived benchmark that heavily uses comprehensions[S4].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the 2x (specifically 1.96x) speedup for the microbenchmark and the 11% speedup for the real-world benchmark, both of which are explicitly supported by the provided context in S1 and S4.",
+        "cited_docs": [
+          "pep-0709"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 14376,
+        "input_tokens": 2772,
+        "output_tokens": 334,
+        "cost_usd": 0.0006663,
+        "judge_cost_usd": null,
+        "trace_id": "ed7369de13b00c3bcca9e50f28896659"
+      },
+      {
+        "id": "q13",
+        "category": "lookup",
+        "difficulty": "core",
+        "question": "Which operators were added to dict for merging and updating?",
+        "answer": "The PEP added two new operators to the built\u2011in **dict**:\n\n* **`|`** \u2013 a *merge* operator that creates a new dictionary containing the combined key/value pairs.  \n* **`|=`** \u2013 an *update* (augmented\u2011assignment) operator that updates a dictionary in place.\n\nThese operators were introduced in PEP\u202f584 \u201cAdd Union Operators To dict\u201d[S1].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the `|` and `|=` operators as the merge and update operators for dict, which aligns with the reference answer and is fully supported by the provided context (specifically S1 and S4).",
+        "cited_docs": [
+          "pep-0584"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 11038,
+        "input_tokens": 2211,
+        "output_tokens": 252,
+        "cost_usd": 0.00052065,
+        "judge_cost_usd": null,
+        "trace_id": "1213d43f8a673bad9d04594b53ef1a57"
+      },
+      {
+        "id": "q14",
+        "category": "lookup",
+        "difficulty": "core",
+        "question": "How do you annotate a class variable, as opposed to an instance variable, in a class body?",
+        "answer": "Use a\u202f`typing.ClassVar` annotation.  \nIn a class body, a plain annotation (e.g. `x: int`) is treated as an **instance** variable, while wrapping the type in `ClassVar[\u2026]` tells static checkers that the name is a **class** variable and should not be set on instances.\n\n```python\nfrom typing import ClassVar, Dict\n\nclass Ship:\n    captain: str = \"Picard\"                     # instance variable (has default)\n    damage: int                                 # instance variable (no default)\n    stats: ClassVar[Dict[str, int]] = {}        # class variable\n```\n\n`ClassVar` is defined in the `typing` module and is the prescribed way to annotate class\u2011level attributes per PEP\u202f526\u202f[\u200bS2].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies `typing.ClassVar` as the method to annotate class variables, matching the reference answer, and all specific details (syntax, examples, PEP 526 reference) are directly supported by the provided context.",
+        "cited_docs": [
+          "pep-0526"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 11692,
+        "input_tokens": 2173,
+        "output_tokens": 458,
+        "cost_usd": 0.00066945,
+        "judge_cost_usd": null,
+        "trace_id": "b88ce6207260fa7c0d2a3a3446afb0ed"
+      },
+      {
+        "id": "q15",
+        "category": "lookup",
+        "difficulty": "core",
+        "question": "Where are function annotations stored at runtime?",
+        "answer": "Function annotations are kept on the function object itself. After a function is compiled, Python creates a mutable dictionary named\u202f`__annotations__` on that function, mapping each parameter name (and the special key `\"return\"` for a return\u2011value annotation) to the evaluated annotation object\u202f\u2014\u202fe.g.\u202f`{'a': str, 'b': int, 'return': None}`\u202f[S4].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies that function annotations are stored in the function's `__annotations__` attribute as a dictionary mapping parameter names and 'return' to their evaluated values, which is fully supported by the provided context (specifically S4).",
+        "cited_docs": [
+          "pep-3107"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 10656,
+        "input_tokens": 2388,
+        "output_tokens": 264,
+        "cost_usd": 0.0005562000000000001,
+        "judge_cost_usd": null,
+        "trace_id": "d78eaa5a1d76bd09e101fb6a5b5992cc"
+      },
+      {
+        "id": "q16",
+        "category": "lookup",
+        "difficulty": "core",
+        "question": "Which two magic methods implement an asynchronous context manager used with async with?",
+        "answer": "The asynchronous context\u2011manager protocol is defined by the two magic methods **`__aenter__`** and **`__aexit__`**; an object that implements both can be used with `async with`\u202f[ S1 ].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies __aenter__ and __aexit__ as the two magic methods, which aligns with the reference answer and is fully supported by the provided context [S1].",
+        "cited_docs": [
+          "pep-0492"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 10215,
+        "input_tokens": 2085,
+        "output_tokens": 189,
+        "cost_usd": 0.0004545,
+        "judge_cost_usd": null,
+        "trace_id": "7f9c8d6cbfeedd64c0936a124db9dbf2"
+      },
+      {
+        "id": "q17",
+        "category": "lookup",
+        "difficulty": "core",
+        "question": "What two arguments does a WSGI application callable receive?",
+        "answer": "A WSGI application callable is invoked with **two positional arguments**:  \n\n1. **`environ`** \u2013 a dictionary containing the CGI\u2011style environment variables for the request.  \n2. **`start_response`** \u2013 a callable the application uses to begin the HTTP response.\n\nThese are the two arguments the callable must accept\u202f[\u200bS2].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the two arguments (environ dictionary and start_response callable) as stated in the reference, and all details provided are directly supported by the retrieved context [S2] and [S3].",
+        "cited_docs": [
+          "pep-3333"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 10343,
+        "input_tokens": 2349,
+        "output_tokens": 213,
+        "cost_usd": 0.0005120999999999999,
+        "judge_cost_usd": null,
+        "trace_id": "a27d67f349c95994de04e228bc39f8a6"
+      },
+      {
+        "id": "q18",
+        "category": "lookup",
+        "difficulty": "core",
+        "question": "What syntax does PEP 380 add for a generator to delegate to a subgenerator?",
+        "answer": "PEP\u202f380 introduces a new expression that can be used inside a generator:\n\n```python\nyield from <expr>\n```\n\nwhere `<expr>` evaluates to an iterable (typically another generator). This `yield from` statement delegates the generator\u2019s operation to the sub\u2011generator.\u202f[S3]",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the `yield from <expr>` syntax as the answer, and all details provided (such as the expression evaluating to an iterable and the delegation mechanism) are directly supported by the retrieved context [S3].",
+        "cited_docs": [
+          "pep-0380"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 11647,
+        "input_tokens": 2135,
+        "output_tokens": 202,
+        "cost_usd": 0.00047175,
+        "judge_cost_usd": null,
+        "trace_id": "23634ab69ec2d761cb2f92ab36fb1183"
+      },
+      {
+        "id": "q19",
+        "category": "lookup",
+        "difficulty": "core",
+        "question": "Which environment variable can re-enable or disable the GIL at runtime in a free-threaded build?",
+        "answer": "The environment variable is **`PYTHONGIL`** \u2013 setting `PYTHONGIL=0` forces the GIL off, and `PYTHONGIL=1` forces it on in a free\u2011threaded (``--disable-gil``) build[S3].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the PYTHONGIL environment variable and accurately describes its behavior (0 disables, 1 enables) based on the provided context [S3].",
+        "cited_docs": [
+          "pep-0703"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 8383,
+        "input_tokens": 2008,
+        "output_tokens": 226,
+        "cost_usd": 0.0004707,
+        "judge_cost_usd": null,
+        "trace_id": "b4a01fb2f5f6fd11a185a8fc0df29d8f"
+      },
+      {
+        "id": "q20",
+        "category": "lookup",
+        "difficulty": "core",
+        "question": "Before PEP 701, what was impossible to do inside the expression part of an f-string?",
+        "answer": "Before PEP\u202f701 the expression part of an f\u2011string could not contain the same quote character that delimits the surrounding f\u2011string (e.g., you could not write\u202f`f'Magic wand: {bag['wand']}'`).\u202fThe parser also rejected backslashes and comments inside the expression, but the quote\u2011character limitation was the primary impossibility\u202f[S1].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies that reusing the delimiting quote character was impossible, and accurately notes that backslashes and comments were also prohibited, all of which are explicitly supported by the provided context.",
+        "cited_docs": [
+          "pep-0701"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 9879,
+        "input_tokens": 2366,
+        "output_tokens": 343,
+        "cost_usd": 0.00061215,
+        "judge_cost_usd": null,
+        "trace_id": "9722370827fa3f91e849417e85528707"
+      },
+      {
+        "id": "q21",
+        "category": "multi_doc",
+        "difficulty": "core",
+        "question": "PEP 3107 introduced function annotation syntax. What did PEP 484 later standardise on top of it?",
+        "answer": "PEP\u202f484 built on the annotation syntax introduced by PEP\u202f3107 by standardising **type hints** \u2013 a formal, library\u2011provided vocabulary and conventions for using function annotations to declare argument and return types for static type checking[S3].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies that PEP 484 standardized type hints on top of PEP 3107's syntax, and this claim is fully supported by the retrieved context [S3] which states PEP 484 introduces a standard vocabulary and tools for type hints.",
+        "cited_docs": [
+          "pep-0484"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 11200,
+        "input_tokens": 1992,
+        "output_tokens": 242,
+        "cost_usd": 0.0004803,
+        "judge_cost_usd": null,
+        "trace_id": "b080be8dc95b24e88053aab4eab90952"
+      },
+      {
+        "id": "q22",
+        "category": "multi_doc",
+        "difficulty": "core",
+        "question": "What is the difference between how PEP 604 and PEP 484 let you write a union of two types?",
+        "answer": "PEP\u202f484 lets you express a union only with the generic factory **`typing.Union`** (or its shortcut `Optional`), e.g.:\n\n```python\nfrom typing import Union\ndef f(x: Union[int, str]) -> None: \u2026\n```\n\nPEP\u202f604 introduces a new infix operator **`|`** that can be used directly in annotations, so the same union is written as:\n\n```python\ndef f(x: int | str) -> None: \u2026\n```\n\nThe `|` syntax is defined to be equivalent to `typing.Union[int, str]` and works for function, variable and parameter annotations\u202f[S1][S3]. In contrast, PEP\u202f484 requires the explicit `Union[...]` form for disjunctions\u202f[S7].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies that PEP 484 uses `Union[X, Y]` and PEP 604 introduces the `X | Y` syntax, and all specific claims (including the equivalence and the use of `Optional` as a shortcut in PEP 484) are supported by the provided context.",
+        "cited_docs": [
+          "pep-0604",
+          "pep-0604",
+          "pep-0484"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs",
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 3,
+        "latency_ms": 22967,
+        "input_tokens": 4277,
+        "output_tokens": 647,
+        "cost_usd": 0.0011267999999999999,
+        "judge_cost_usd": null,
+        "trace_id": "361b08c70c23242f94367f932a8105fb"
+      },
+      {
+        "id": "q23",
+        "category": "metadata_sql",
+        "difficulty": "core",
+        "question": "How many of the documents in the corpus have the status Final?",
+        "answer": "22 documents in the corpus have the status **Final**.",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant's answer matches the reference answer of 22, and the context provided (SQL query result showing 22) supports this claim.",
+        "cited_docs": [],
+        "citation_precision": null,
+        "tools_used": [
+          "sql_query"
+        ],
+        "tool_ok": true,
+        "steps": 2,
+        "latency_ms": 6991,
+        "input_tokens": 1154,
+        "output_tokens": 87,
+        "cost_usd": 0.00023835,
+        "judge_cost_usd": null,
+        "trace_id": "82fbacbfa84adb60342106cc96ccd780"
+      },
+      {
+        "id": "q24",
+        "category": "metadata_sql",
+        "difficulty": "core",
+        "question": "Which PEPs in the corpus target Python 3.12?",
+        "answer": "The corpus contains three PEPs that target Python\u202f3.12:\n\n| PEP # | Title |\n|-------|----------------------------------------------|\n| 695   | Type Parameter Syntax |\n| 701   | Syntactic formalization of f\u2011strings |\n| 709   | Inlined comprehensions |\n\nThese are the only PEPs whose `python_version` field is set to **3.12** in the document metadata.",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies PEPs 695, 701, and 709 as targeting Python 3.12, which matches the reference answer, and all specific details (titles and PEP numbers) are directly supported by the provided SQL query context.",
+        "cited_docs": [],
+        "citation_precision": null,
+        "tools_used": [
+          "sql_query"
+        ],
+        "tool_ok": true,
+        "steps": 2,
+        "latency_ms": 3865,
+        "input_tokens": 1189,
+        "output_tokens": 227,
+        "cost_usd": 0.0003486,
+        "judge_cost_usd": null,
+        "trace_id": "61943a02977f40524bdd894abdf506f2"
+      },
+      {
+        "id": "q25",
+        "category": "metadata_sql",
+        "difficulty": "core",
+        "question": "Which document in the collection was created earliest, and on what date?",
+        "answer": "The earliest document in the collection is **PEP\u202f257 \u2013 \u201cDocstring Conventions,\u201d** which was created on **May\u202f29\u202f2001**.",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identified PEP 257 and the date May 29, 2001, which matches the reference answer and is fully supported by the provided SQL query context.",
+        "cited_docs": [],
+        "citation_precision": null,
+        "tools_used": [
+          "sql_query"
+        ],
+        "tool_ok": true,
+        "steps": 2,
+        "latency_ms": 1127,
+        "input_tokens": 1177,
+        "output_tokens": 169,
+        "cost_usd": 0.00030329999999999995,
+        "judge_cost_usd": null,
+        "trace_id": "8861ff73df62ee10dc6dc022c954c44c"
+      },
+      {
+        "id": "q26",
+        "category": "metadata_sql",
+        "difficulty": "core",
+        "question": "Which PEP in the corpus is the longest by word count?",
+        "answer": "The longest PEP in the corpus is **PEP\u202f484 \u2013 \u201cType Hints\u201d**, with a word count of **12,938**.",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies PEP 484 as the longest PEP, matching the reference answer, and the specific word count provided is directly supported by the retrieved SQL query context.",
+        "cited_docs": [],
+        "citation_precision": null,
+        "tools_used": [
+          "sql_query"
+        ],
+        "tool_ok": true,
+        "steps": 2,
+        "latency_ms": 3814,
+        "input_tokens": 1173,
+        "output_tokens": 140,
+        "cost_usd": 0.00028094999999999997,
+        "judge_cost_usd": null,
+        "trace_id": "ab0abff9456c44814f8ecd4e74574b09"
+      },
+      {
+        "id": "q27",
+        "category": "calculation",
+        "difficulty": "core",
+        "question": "PEP 8 sets one maximum line length for code and a lower one for docstrings and comments. What is the difference between the two limits?",
+        "answer": "PEP\u202f8 specifies a **79\u2011character** limit for normal code lines and a **72\u2011character** limit for docstrings and comments, a difference of **7 characters**\u202f[S1].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the 79-character limit for code and 72-character limit for docstrings/comments, calculating the 7-character difference, which is fully supported by the provided context [S1].",
+        "cited_docs": [
+          "pep-0008"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": false,
+        "steps": 2,
+        "latency_ms": 7240,
+        "input_tokens": 2232,
+        "output_tokens": 242,
+        "cost_usd": 0.0005162999999999999,
+        "judge_cost_usd": null,
+        "trace_id": "4de5d6d41e18af0665a17222e3698ce1"
+      },
+      {
+        "id": "q28",
+        "category": "calculation",
+        "difficulty": "core",
+        "question": "How many years apart were PEP 8 and PEP 703 created, comparing their creation years?",
+        "answer": "PEP\u202f8 was created in\u202f2001 and PEP\u202f703 in\u202f2023, so they were created **22\u202fyears apart**.",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the creation years (2001 and 2023) from the context, calculates the difference as 22 years, and matches the reference answer.",
+        "cited_docs": [],
+        "citation_precision": null,
+        "tools_used": [
+          "sql_query",
+          "calculator"
+        ],
+        "tool_ok": true,
+        "steps": 3,
+        "latency_ms": 11411,
+        "input_tokens": 1863,
+        "output_tokens": 181,
+        "cost_usd": 0.0004152,
+        "judge_cost_usd": null,
+        "trace_id": "0e7b22b9ab9b27874bd5e2b0d943c2f0"
+      },
+      {
+        "id": "q29",
+        "category": "calculation",
+        "difficulty": "core",
+        "question": "What is the combined word count of the PEPs in the corpus that target Python 3.12, divided by the number of such PEPs (the average)?",
+        "answer": "The average word count of the PEPs that target Python\u202f3.12 is **\u2248\u202f4,714.33 words** (total\u202f14,143 words across 3 PEPs, divided by 3).",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant's answer matches the reference answer's calculation and value, and all factual claims (total words, count of PEPs, and the resulting average) are directly supported by the provided SQL query results and calculator output.",
+        "cited_docs": [],
+        "citation_precision": null,
+        "tools_used": [
+          "sql_query",
+          "calculator"
+        ],
+        "tool_ok": true,
+        "steps": 3,
+        "latency_ms": 3164,
+        "input_tokens": 1891,
+        "output_tokens": 247,
+        "cost_usd": 0.00046889999999999996,
+        "judge_cost_usd": null,
+        "trace_id": "81c2a180c0000679641085d435b082a3"
+      },
+      {
+        "id": "q30",
+        "category": "unanswerable",
+        "difficulty": "core",
+        "question": "What is the maximum line length recommended by the Google Python Style Guide?",
+        "answer": "The documents provided do not contain a statement about the maximum line length recommended by the Google Python Style Guide.",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies that the provided documents (which contain PEP 8, not the Google Style Guide) do not contain the specific information requested, aligning with the reference answer and the retrieved context.",
+        "cited_docs": [],
+        "citation_precision": null,
+        "tools_used": [
+          "search_docs",
+          "search_docs",
+          "search_docs",
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 5,
+        "latency_ms": 112645,
+        "input_tokens": 17233,
+        "output_tokens": 435,
+        "cost_usd": 0.0029111999999999996,
+        "judge_cost_usd": null,
+        "trace_id": "daf7bffa46a83fbb9cd2913ffa2fb633"
+      },
+      {
+        "id": "q31",
+        "category": "unanswerable",
+        "difficulty": "core",
+        "question": "Which PEP introduced the walrus operator for list slicing in Python 2.7?",
+        "answer": "The wal\u2011wal operator (`:=`) was introduced by **PEP\u202f572 \u2013 Assignment Expressions**.\u202fPEP\u202f572 targets Python\u202f3.8 (its metadata lists\u202fPython\u2011Version\u202f3.8) and was not part of Python\u202f2.7\u202f[ S11 ].  \n\nTherefore, no PEP added a \u201cwalrus operator for list slicing\u201d to Python\u202f2.7; the feature only appears in Python\u202f3.8 via PEP\u202f572.",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies that the premise is false (PEP 572 targets Python 3.8, not 2.7, and is not about list slicing), which aligns with the reference answer, and all factual claims are supported by the provided context (specifically S1 and S11).",
+        "cited_docs": [
+          "pep-0572"
+        ],
+        "citation_precision": null,
+        "tools_used": [
+          "search_docs",
+          "search_docs",
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 4,
+        "latency_ms": 65453,
+        "input_tokens": 9813,
+        "output_tokens": 772,
+        "cost_usd": 0.0020509499999999997,
+        "judge_cost_usd": null,
+        "trace_id": "84ad0191b5aa37b3f524e8570912c54c"
+      },
+      {
+        "id": "q32",
+        "category": "unanswerable",
+        "difficulty": "core",
+        "question": "How many downloads did the dataclasses backport have on PyPI in 2024?",
+        "answer": "The documents don\u2019t contain any information about PyPI download statistics for the dataclasses backport in 2024.",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly states that the documents do not contain the requested information, which aligns with the reference answer and is faithful to the lack of retrieved context.",
+        "cited_docs": [],
+        "citation_precision": null,
+        "tools_used": [],
+        "tool_ok": null,
+        "steps": 1,
+        "latency_ms": 4883,
+        "input_tokens": 562,
+        "output_tokens": 144,
+        "cost_usd": 0.0001923,
+        "judge_cost_usd": null,
+        "trace_id": "bdf5d00b3c13ccbd5055b2046465356e"
+      },
+      {
+        "id": "h01",
+        "category": "lookup",
+        "difficulty": "hard",
+        "question": "How should I check whether a variable is None, according to the style guide?",
+        "answer": "Check a variable against\u202f`None` with the identity operators:\n\n```python\nif foo is None:\n    \u2026\n# or\nif foo is not None:\n    \u2026\n```\n\nPEP\u202f8 recommends using `is`/`is not` (not `==`/`!=` and not `not foo is None`) because `None` is a singleton and identity comparison is both clearer and faster\u202f[S1][S4].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies that `is` or `is not` should be used for None comparisons, which aligns with the reference answer and is explicitly supported by the retrieved context [S4].",
+        "cited_docs": [
+          "pep-0008",
+          "pep-0008"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 12923,
+        "input_tokens": 2087,
+        "output_tokens": 265,
+        "cost_usd": 0.0005118,
+        "judge_cost_usd": null,
+        "trace_id": "45fabd1f77f39372670fbec1e6eed419"
+      },
+      {
+        "id": "h02",
+        "category": "lookup",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7266, Requested 2048. Please try again in 9.855s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "h03",
+        "category": "lookup",
+        "difficulty": "hard",
+        "question": "How should module-level constants be named?",
+        "answer": "Module\u2011level constants should be written in **ALL_CAPS_WITH_UNDERSCORES** (i.e., all capital letters with underscores separating words) and defined at the top level of the module\u202f\u2014\u202fe.g., `MAX_OVERFLOW`, `TOTAL`\u202f[S1].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the naming convention (ALL_CAPS_WITH_UNDERSCORES) and provides the exact examples from the reference, all of which are directly supported by the retrieved context [S1].",
+        "cited_docs": [
+          "pep-0008"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 10565,
+        "input_tokens": 1673,
+        "output_tokens": 233,
+        "cost_usd": 0.0004257,
+        "judge_cost_usd": null,
+        "trace_id": "23d783e558f94ee8c12d85e03980d94a"
+      },
+      {
+        "id": "h04",
+        "category": "lookup",
+        "difficulty": "hard",
+        "question": "What should module names look like?",
+        "answer": "Module names should be short and all\u202flowercase. Underscores may be used when they improve readability, but they are generally discouraged for package names.\u202f[S1]",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies that module names should be short, all-lowercase, and may use underscores for readability, which aligns with the reference answer and is fully supported by the retrieved context [S1].",
+        "cited_docs": [
+          "pep-0008"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 7600,
+        "input_tokens": 1724,
+        "output_tokens": 207,
+        "cost_usd": 0.00041384999999999995,
+        "judge_cost_usd": null,
+        "trace_id": "9b46fa937453827f028c39887dfe759e"
+      },
+      {
+        "id": "h05",
+        "category": "lookup",
+        "difficulty": "hard",
+        "question": "In a match statement, which pattern always succeeds and binds no name?",
+        "answer": "The wildcard pattern `_` always succeeds and does not bind any name.\u202fIt is defined as a wildcard pattern that matches any subject without creating a binding.\u202f[S1]",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the wildcard pattern `_` as the one that always succeeds and binds no name, which is directly supported by the retrieved context [S1].",
+        "cited_docs": [
+          "pep-0634"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 7135,
+        "input_tokens": 2027,
+        "output_tokens": 165,
+        "cost_usd": 0.0004278,
+        "judge_cost_usd": null,
+        "trace_id": "d727a53988a57e3f3e9363ddf43ade5f"
+      },
+      {
+        "id": "h06",
+        "category": "lookup",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198924, Requested 1939. Please try again in 6m12.816s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "h07",
+        "category": "lookup",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199080, Requested 1808. Please try again in 6m23.616s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "h08",
+        "category": "lookup",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199196, Requested 2059. Please try again in 9m2.159999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "h09",
+        "category": "lookup",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199330, Requested 2107. Please try again in 10m20.784s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "h10",
+        "category": "lookup",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199337, Requested 1855. Please try again in 8m34.943999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "h11",
+        "category": "lookup",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199337, Requested 807. Please try again in 1m2.208s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "h12",
+        "category": "lookup",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199357, Requested 1823. Please try again in 8m29.76s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "h13",
+        "category": "lookup",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199201, Requested 1970. Please try again in 8m25.872s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "h14",
+        "category": "lookup",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199292, Requested 2479. Please try again in 12m45.072s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "h15",
+        "category": "lookup",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199325, Requested 1849. Please try again in 8m27.168s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "h16",
+        "category": "lookup",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199353, Requested 1787. Please try again in 8m12.48s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "h17",
+        "category": "lookup",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199353, Requested 786. Please try again in 1m0.047999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "a01",
+        "category": "lookup",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199212, Requested 1245. Please try again in 3m17.424s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "a02",
+        "category": "lookup",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199249, Requested 1576. Please try again in 5m56.4s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "a03",
+        "category": "lookup",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199342, Requested 1356. Please try again in 5m1.536s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "a04",
+        "category": "lookup",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199385, Requested 1325. Please try again in 5m6.72s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "a05",
+        "category": "lookup",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199385, Requested 772. Please try again in 1m7.824s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "x01",
+        "category": "multi_doc",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199385, Requested 780. Please try again in 1m11.28s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "x02",
+        "category": "multi_doc",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199385, Requested 775. Please try again in 1m9.12s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "x03",
+        "category": "multi_doc",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199384, Requested 782. Please try again in 1m11.712s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "m01",
+        "category": "metadata_sql",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199384, Requested 774. Please try again in 1m8.256s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "m02",
+        "category": "metadata_sql",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199384, Requested 775. Please try again in 1m8.688s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "m03",
+        "category": "metadata_sql",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199384, Requested 908. Please try again in 2m6.143999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "m04",
+        "category": "calculation",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199384, Requested 781. Please try again in 1m11.28s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "m05",
+        "category": "metadata_sql",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199384, Requested 900. Please try again in 2m2.688s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "u01",
+        "category": "unanswerable",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199384, Requested 775. Please try again in 1m8.688s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "u02",
+        "category": "unanswerable",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199383, Requested 899. Please try again in 2m1.824s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      },
+      {
+        "id": "u03",
+        "category": "unanswerable",
+        "difficulty": "hard",
+        "error": "RateLimitError: Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `[redacted-id]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199383, Requested 774. Please try again in 1m7.824s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+        "correct": false,
+        "faithful": false
+      }
+    ]
+  }
+}

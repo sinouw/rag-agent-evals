@@ -56,8 +56,11 @@ _LABEL = re.compile(r"\bS\d+\b")
 _KEY_LIKE = re.compile(r"\b(gsk_|sk-|AIza)[A-Za-z0-9_\-*]{6,}")
 
 
+_ACCOUNT_ID = re.compile(r"\b(org|proj|user)_[A-Za-z0-9]{8,}")
+
+
 def redact(text: str) -> str:
-    return _KEY_LIKE.sub("[redacted-key]", text)
+    return _ACCOUNT_ID.sub("[redacted-id]", _KEY_LIKE.sub("[redacted-key]", text))
 
 
 def normalize_citations(answer: str) -> str:
@@ -254,18 +257,14 @@ class Agent:
                     result = ToolResult("Error: 'query' is required.", error=True)
                 else:
                     k = max(1, min(int(args.get("k") or self.retriever.top_k), 10))
-                    with tr.span(
-                        "retrieval.embed_query", parent=span, **{"embedding.model": self.retriever.embedder.name}
-                    ):
-                        vector = await asyncio.to_thread(self.retriever.embedder.embed_query, query)
-                    with tr.span(
-                        "retrieval.vector_search", parent=span, **{"retrieval.query": query, "retrieval.top_k": k}
-                    ) as s:
-                        hits = await asyncio.to_thread(self.retriever.store.search, vector, k)
-                        s.set_attribute(
-                            "retrieval.results",
-                            json.dumps([{"chunk_id": h.chunk_id, "score": round(h.score, 4)} for h in hits]),
-                        )
+                    hits, stages = await asyncio.to_thread(self.retriever.search_with_stages, query, k)
+                    for stage in stages:
+                        tr.record(stage.name, span, stage.start_ns, stage.end_ns, **stage.attributes)
+                    span.set_attribute("retrieval.config", self.retriever.config.label())
+                    span.set_attribute(
+                        "retrieval.results",
+                        json.dumps([{"chunk_id": h.chunk_id, "score": round(h.score, 4)} for h in hits]),
+                    )
                     result = search_result(query, k, hits, registry)
             elif name == "sql_query":
                 result = await asyncio.to_thread(self.sql_tool.run, str(args.get("sql") or ""))

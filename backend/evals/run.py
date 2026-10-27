@@ -65,6 +65,7 @@ class GoldenItem:
     expected_docs: list[str] = field(default_factory=list)
     evidence: str | None = None  # text the answer-bearing chunk must contain
     expected_tool: str | None = None
+    difficulty: str = "core"  # core: the original set; hard: paraphrased, header-only and near-miss questions
 
 
 def load_golden(path: Path = GOLDEN_PATH) -> list[GoldenItem]:
@@ -83,6 +84,25 @@ def first_relevant_rank(retrieved_docs: list[str], expected: list[str]) -> int |
         if doc in expected:
             return rank
     return None
+
+
+def _retrieval_summary(rows: list[dict[str, Any]], k: int) -> dict[str, Any]:
+    n = len(rows) or 1
+    with_evidence = [r for r in rows if r["has_evidence"]]
+    n_ev = len(with_evidence) or 1
+    return {
+        "questions": len(rows),
+        "k": k,
+        "hit_at_1": sum(1 for r in rows if r["rank"] == 1) / n,
+        "hit_at_3": sum(1 for r in rows if r["rank"] and r["rank"] <= 3) / n,
+        f"hit_at_{k}": sum(1 for r in rows if r["rank"]) / n,
+        "mrr": sum(1 / r["rank"] for r in rows if r["rank"]) / n,
+        f"recall_at_{k}": sum(r["recall"] for r in rows) / n,
+        "evidence_questions": len(with_evidence),
+        f"evidence_hit_at_{k}": sum(1 for r in with_evidence if r["evidence_rank"]) / n_ev,
+        "evidence_mrr": sum(1 / r["evidence_rank"] for r in with_evidence if r["evidence_rank"]) / n_ev,
+        "p50_latency_ms": round(statistics.median(r["latency_ms"] for r in rows), 1) if rows else 0.0,
+    }
 
 
 def retrieval_eval(retriever: Retriever, items: list[GoldenItem], k: int = 5) -> dict[str, Any]:
@@ -107,6 +127,7 @@ def retrieval_eval(retriever: Retriever, items: list[GoldenItem], k: int = 5) ->
             {
                 "id": item.id,
                 "category": item.category,
+                "difficulty": item.difficulty,
                 "rank": rank,
                 "evidence_rank": evidence_rank,
                 "has_evidence": bool(item.evidence),
@@ -115,21 +136,10 @@ def retrieval_eval(retriever: Retriever, items: list[GoldenItem], k: int = 5) ->
                 "latency_ms": round(latency_ms, 1),
             }
         )
-    n = len(rows) or 1
-    with_evidence = [r for r in rows if r["has_evidence"]]
-    n_ev = len(with_evidence) or 1
-    summary = {
-        "questions": len(rows),
-        "k": k,
-        "hit_at_1": sum(1 for r in rows if r["rank"] == 1) / n,
-        "hit_at_3": sum(1 for r in rows if r["rank"] and r["rank"] <= 3) / n,
-        f"hit_at_{k}": sum(1 for r in rows if r["rank"]) / n,
-        "mrr": sum(1 / r["rank"] for r in rows if r["rank"]) / n,
-        f"recall_at_{k}": sum(r["recall"] for r in rows) / n,
-        "evidence_questions": len(with_evidence),
-        f"evidence_hit_at_{k}": sum(1 for r in with_evidence if r["evidence_rank"]) / n_ev,
-        "evidence_mrr": sum(1 / r["evidence_rank"] for r in with_evidence if r["evidence_rank"]) / n_ev,
-        "p50_latency_ms": round(statistics.median(r["latency_ms"] for r in rows), 1) if rows else 0.0,
+    summary = _retrieval_summary(rows, k)
+    summary["by_difficulty"] = {
+        d: _retrieval_summary([r for r in rows if r["difficulty"] == d], k)
+        for d in sorted({r["difficulty"] for r in rows})
     }
     return {"summary": summary, "rows": rows}
 
@@ -173,6 +183,7 @@ async def run_item(agent: Agent, judge: LLMClient, item: GoldenItem) -> dict[str
         return {
             "id": item.id,
             "category": item.category,
+            "difficulty": item.difficulty,
             "error": error or "no answer",
             "correct": False,
             "faithful": False,
@@ -184,6 +195,7 @@ async def run_item(agent: Agent, judge: LLMClient, item: GoldenItem) -> dict[str
     row: dict[str, Any] = {
         "id": item.id,
         "category": item.category,
+        "difficulty": item.difficulty,
         "question": item.question,
         "answer": done["answer"],
         **verdict,
@@ -248,21 +260,44 @@ def summarize_e2e(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "avg_cost_usd": statistics.fmean(costs) if costs else None,
         "total_cost_usd": sum(costs) if costs else None,
         "by_category": {name: block(group) for name, group in sorted(groups.items())},
+        "by_difficulty": {
+            d: block([r for r in rows if r.get("difficulty", "core") == d])
+            for d in sorted({r.get("difficulty", "core") for r in rows})
+        },
     }
+
+
+def is_quota_exhausted(error: str) -> bool:
+    """A provider's daily token/request cap: retrying won't help until it resets."""
+    text = error.lower()
+    return "per day" in text or "(tpd)" in text or "(rpd)" in text
 
 
 async def agent_eval(agent: Agent, judge: LLMClient, items: list[GoldenItem], concurrency: int = 1) -> dict[str, Any]:
     semaphore = asyncio.Semaphore(concurrency)
+    quota_hit = False
 
     async def bounded(item: GoldenItem) -> dict[str, Any]:
+        nonlocal quota_hit
         async with semaphore:
-            row = await run_item(agent, judge, item)
+            if quota_hit:
+                row = {
+                    "id": item.id,
+                    "category": item.category,
+                    "difficulty": item.difficulty,
+                    "error": "skipped: provider daily quota exhausted",
+                    "correct": False,
+                    "faithful": False,
+                }
+            else:
+                row = await run_item(agent, judge, item)
+                quota_hit = quota_hit or is_quota_exhausted(row.get("error", ""))
             mark = "ok " if row.get("correct") else "ERR" if "error" in row else "x  "
             print(f"  {mark} {item.id} {item.category:<13} {row.get('latency_ms', '-')}ms", file=sys.stderr)
             return row
 
     rows = await asyncio.gather(*(bounded(i) for i in items))
-    return {"summary": summarize_e2e(rows), "rows": rows}
+    return {"summary": summarize_e2e(rows), "rows": rows, "quota_exhausted": quota_hit}
 
 
 # ---------------------------------------------------------------- report
@@ -291,6 +326,19 @@ def e2e_summary_lines(s: dict[str, Any], heading: str) -> list[str]:
             f"| {name} | {b['questions']} | {_pct(b['correctness'])} | {_pct(b['faithfulness'])} "
             f"| {_pct(b['citation_precision'])} | {_pct(b['tool_selection'])} |"
         )
+    if len(s.get("by_difficulty", {})) > 1:
+        lines += [
+            "",
+            f"{heading} By difficulty",
+            "",
+            "| Difficulty | Questions | Correctness | Faithfulness | Citation precision | Tool selection |",
+            "|---|---|---|---|---|---|",
+        ]
+        for name, b in s["by_difficulty"].items():
+            lines.append(
+                f"| {name} | {b['questions']} | {_pct(b['correctness'])} | {_pct(b['faithfulness'])} "
+                f"| {_pct(b['citation_precision'])} | {_pct(b['tool_selection'])} |"
+            )
     return lines
 
 
@@ -305,8 +353,9 @@ def update_readme(readme: Path, result: dict[str, Any], report_name: str) -> Non
     meta = result["meta"]
     body = [
         "",
-        f"Measured {meta['timestamp']} on all {meta['golden_questions']} golden questions. "
-        f"Answer model `{meta['provider']}/{meta['model']}`, judge `{meta['judge']}`. "
+        f"Measured {meta['timestamp']} on {meta['golden_questions']} golden questions. "
+        f"Answer model `{meta['provider']}/{meta['model']}`, judge `{meta['judge']}`, "
+        f"retrieval `{meta.get('retrieval', 'dense')}`. "
         f"Full per-question report: [`backend/evals/results/{report_name}`](backend/evals/results/{report_name}).",
         "",
         f"Run on Groq's free tier: the provider returned {meta.get('rate_limited_responses', 0)} rate-limit (HTTP 429) "
@@ -316,6 +365,24 @@ def update_readme(readme: Path, result: dict[str, Any], report_name: str) -> Non
         "",
     ]
     readme.write_text(text[:start] + "\n".join(body) + text[end:])
+
+
+def retrieval_table(r: dict[str, Any]) -> list[str]:
+    """Document-level and answer-bearing-chunk metrics, overall and per difficulty."""
+    k = r["k"]
+    groups = [("all", r), *r.get("by_difficulty", {}).items()]
+    lines = [
+        f"| Questions | Doc Hit@1 | Doc Hit@{k} | Doc MRR | Answer chunk Hit@{k} | Answer chunk MRR |",
+        "|---|---|---|---|---|---|",
+    ]
+    for name, g in groups:
+        if len(groups) == 2 and name != "all":
+            continue  # a single difficulty adds nothing over "all"
+        lines.append(
+            f"| {name} ({g['questions']}; {g['evidence_questions']} with evidence) | {_pct(g['hit_at_1'])} "
+            f"| {_pct(g[f'hit_at_{k}'])} | {g['mrr']:.2f} | {_pct(g[f'evidence_hit_at_{k}'])} | {g['evidence_mrr']:.2f} |"
+        )
+    return lines
 
 
 def render_markdown(result: dict[str, Any]) -> str:
@@ -338,14 +405,10 @@ def render_markdown(result: dict[str, Any]) -> str:
         "",
     ]
     r = result["retrieval"]["summary"]
-    k = r["k"]
     lines += [
-        "| Level | Questions | Hit@1 | Hit@3 | Hit@{k} | MRR | Recall@{k} |".replace("{k}", str(k)),
-        "|---|---|---|---|---|---|---|",
-        f"| Document | {r['questions']} | {_pct(r['hit_at_1'])} | {_pct(r['hit_at_3'])} | {_pct(r[f'hit_at_{k}'])} "
-        f"| {r['mrr']:.2f} | {_pct(r[f'recall_at_{k}'])} |",
-        f"| Answer-bearing chunk | {r['evidence_questions']} | — | — | {_pct(r[f'evidence_hit_at_{k}'])} "
-        f"| {r['evidence_mrr']:.2f} | — |",
+        f"Retrieval config: `{meta.get('retrieval', 'dense')}`",
+        "",
+        *retrieval_table(r),
         "",
         "- **Document**: a chunk from a document that holds the answer was retrieved.",
         "- **Answer-bearing chunk**: a retrieved chunk from that document contains the evidence text "
@@ -400,6 +463,7 @@ def main() -> int:
     parser.add_argument("--retrieval-only", action="store_true", help="skip the agent and judge (no API key needed)")
     parser.add_argument("--limit", type=int, help="only the first N questions")
     parser.add_argument("--ids", help="comma-separated question ids to run")
+    parser.add_argument("--difficulty", choices=["core", "hard"], help="only questions of this difficulty")
     parser.add_argument("--k", type=int, default=5)
     parser.add_argument("--concurrency", type=int, default=1)
     parser.add_argument("--golden", type=Path, default=GOLDEN_PATH)
@@ -415,6 +479,8 @@ def main() -> int:
     if args.ids:
         wanted = set(args.ids.split(","))
         items = [i for i in items if i.id in wanted]
+    if args.difficulty:
+        items = [i for i in items if i.difficulty == args.difficulty]
     if args.limit:
         items = items[: args.limit]
 
@@ -431,6 +497,7 @@ def main() -> int:
     meta: dict[str, Any] = {
         "timestamp": datetime.now(UTC).strftime("%Y-%m-%d %H:%M UTC"),
         "embedding_model": retriever.embedder.name,
+        "retrieval": retriever.config.label(),
         "k": args.k,
         "documents": len(docs),
         "chunks": sum(len(chunk_document(d, settings.chunk_size, settings.chunk_overlap)) for d in docs),
@@ -466,8 +533,18 @@ def main() -> int:
     (args.out / ("latest-retrieval.md" if args.retrieval_only else "latest.md")).write_text(markdown)
     print(markdown)
     if args.update_readme and "e2e" in result:
-        update_readme(EVAL_DIR.parents[1] / "README.md", result, f"{stamp}-{label}.md")
-        print("README.md updated with these results.", file=sys.stderr)
+        errors = result["e2e"]["summary"]["errors"]
+        if errors:
+            # Errors count as wrong answers, so a partial run would understate quality.
+            print(
+                f"README.md NOT updated: {errors} question(s) errored. Rerun when the cause is fixed.", file=sys.stderr
+            )
+        else:
+            update_readme(EVAL_DIR.parents[1] / "README.md", result, f"{stamp}-{label}.md")
+            print("README.md updated with these results.", file=sys.stderr)
+    if result.get("e2e", {}).get("quota_exhausted"):
+        print("Stopped early: the provider's daily quota is exhausted. Rerun after it resets.", file=sys.stderr)
+        return 3
 
     failures = []
     hit_rate = result["retrieval"]["summary"][f"hit_at_{args.k}"]
