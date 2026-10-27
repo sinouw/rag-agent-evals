@@ -68,3 +68,11 @@ def test_source_registry_labels_are_stable_across_searches(indexed):
     assert registry.label(first[0]) == "S1"
     second = retriever.search("assignment expressions walrus", 3)
     assert all(registry.label(h).startswith("S") for h in second)
+
+
+def test_api_keys_are_masked_in_settings_repr():
+    from app.config import Settings
+
+    settings = Settings(groq_api_key="gsk_secret_value", trace_log_path=None)
+    assert "gsk_secret_value" not in repr(settings)
+    assert settings.api_key_for("groq") == "gsk_secret_value"

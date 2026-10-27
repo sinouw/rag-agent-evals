@@ -3,6 +3,7 @@ from __future__ import annotations
 from functools import lru_cache
 from pathlib import Path
 
+from pydantic import SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -16,13 +17,13 @@ class Settings(BaseSettings):
     # Answering model. Any OpenAI-compatible provider works; see app/llm.py for presets.
     llm_provider: str = "groq"
     llm_model: str | None = None
-    llm_api_key: str | None = None
+    llm_api_key: SecretStr | None = None
     llm_temperature: float = 0.0
 
-    # Provider keys, read from the environment or `.env`.
-    groq_api_key: str | None = None
-    gemini_api_key: str | None = None
-    openai_api_key: str | None = None
+    # Provider keys, read from the environment or `.env`. SecretStr keeps them out of reprs and logs.
+    groq_api_key: SecretStr | None = None
+    gemini_api_key: SecretStr | None = None
+    openai_api_key: SecretStr | None = None
 
     # Judge model used by the eval suite (defaults to the answering provider).
     judge_provider: str | None = None
@@ -58,9 +59,9 @@ class Settings(BaseSettings):
 
     def api_key_for(self, provider: str) -> str | None:
         """LLM_API_KEY applies to the answering provider; otherwise use the provider's own key."""
-        if provider == self.llm_provider and self.llm_api_key:
-            return self.llm_api_key
-        return getattr(self, f"{provider}_api_key", None)
+        key = self.llm_api_key if provider == self.llm_provider and self.llm_api_key else None
+        key = key or getattr(self, f"{provider}_api_key", None)
+        return key.get_secret_value() if isinstance(key, SecretStr) else key
 
 
 @lru_cache

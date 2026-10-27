@@ -109,3 +109,10 @@ async def test_provider_errors_become_error_events(indexed, tracing):
     events = await collect(Agent(Failing([]), retriever, sql, tracing, CORPUS), "q")
     assert events[-1]["type"] == "error"
     assert "rate limited" in events[-1]["message"]
+
+
+def test_error_messages_redact_key_like_strings():
+    from app.agent import redact
+
+    assert redact("Incorrect API key provided: gsk_abc123***xyz9.") == "Incorrect API key provided: [redacted-key]."
+    assert "AIza" not in redact("bad key AIzaSyD-abcdefgh")

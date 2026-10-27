@@ -50,6 +50,14 @@ _CITATION_GROUP = re.compile(r"\[([^\[\]]+)\]")
 _LABEL = re.compile(r"\bS\d+\b")
 
 
+# Provider error messages can echo (partially masked) keys back; never forward them.
+_KEY_LIKE = re.compile(r"\b(gsk_|sk-|AIza)[A-Za-z0-9_\-*]{6,}")
+
+
+def redact(text: str) -> str:
+    return _KEY_LIKE.sub("[redacted-key]", text)
+
+
 def extract_citation_labels(answer: str) -> list[str]:
     """Labels cited in an answer, in order of first appearance. Handles [S1] and [S1, S3]."""
     seen: list[str] = []
@@ -139,7 +147,7 @@ class Agent:
             except Exception as exc:  # surface provider/tool failures to the client, keep them in the trace
                 root.record_exception(exc)
                 root.set_attribute("error.type", type(exc).__name__)
-                yield {"type": "error", "message": f"{type(exc).__name__}: {exc}", "trace_id": trace_id}
+                yield {"type": "error", "message": redact(f"{type(exc).__name__}: {exc}"), "trace_id": trace_id}
                 return
 
             citations = []

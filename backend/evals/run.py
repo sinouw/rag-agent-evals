@@ -22,6 +22,8 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+from pydantic import SecretStr
+
 from app.agent import Agent
 from app.llm import LLMClient, Usage, estimate_cost
 from app.retrieval import Retriever
@@ -385,7 +387,9 @@ def main() -> int:
         items = items[: args.limit]
 
     if args.retrieval_only:
-        settings = settings.model_copy(update={"llm_provider": "openai", "llm_api_key": "unused-for-retrieval"})
+        settings = settings.model_copy(
+            update={"llm_provider": "openai", "llm_api_key": SecretStr("unused-for-retrieval")}
+        )
     components = build_components(settings)
     retriever = components.retriever
 
