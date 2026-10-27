@@ -153,7 +153,7 @@ def parse_judgement(text: str) -> dict[str, Any]:
 async def judge_answer(
     judge: LLMClient, item: GoldenItem, answer: str, context: list[dict[str, str]]
 ) -> tuple[dict, Usage]:
-    context_text = "\n\n".join(f"[{c['tool']}]\n{c['content']}" for c in context)[:24_000] or "(no tool calls)"
+    context_text = "\n\n".join(f"[{c['tool']}]\n{c['content']}" for c in context)[:16_000] or "(no tool calls)"
     prompt = JUDGE_PROMPT.format(
         question=item.question, reference=item.reference_answer, answer=answer or "(empty)", context=context_text
     )
@@ -272,6 +272,49 @@ def _pct(value: float | None) -> str:
     return "—" if value is None else f"{value * 100:.0f}%"
 
 
+def e2e_summary_lines(s: dict[str, Any], heading: str) -> list[str]:
+    """Summary and per-category tables for the end-to-end run (also written into the README)."""
+    cost = "—" if s["avg_cost_usd"] is None else f"${s['avg_cost_usd']:.5f}"
+    lines = [
+        "| Correctness | Faithfulness | Citation precision | Tool selection | p50 / p95 latency | Avg tokens (in / out) | Avg cost / question | Errors |",
+        "|---|---|---|---|---|---|---|---|",
+        f"| {_pct(s['correctness'])} | {_pct(s['faithfulness'])} | {_pct(s['citation_precision'])} | {_pct(s['tool_selection'])} "
+        f"| {s['p50_latency_ms']} / {s['p95_latency_ms']} ms | {s['avg_input_tokens']} / {s['avg_output_tokens']} | {cost} | {s['errors']} |",
+        "",
+        f"{heading} By category",
+        "",
+        "| Category | Questions | Correctness | Faithfulness | Citation precision | Tool selection |",
+        "|---|---|---|---|---|---|",
+    ]
+    for name, b in s["by_category"].items():
+        lines.append(
+            f"| {name} | {b['questions']} | {_pct(b['correctness'])} | {_pct(b['faithfulness'])} "
+            f"| {_pct(b['citation_precision'])} | {_pct(b['tool_selection'])} |"
+        )
+    return lines
+
+
+README_START = "<!-- E2E_RESULTS:START -->"
+README_END = "<!-- E2E_RESULTS:END -->"
+
+
+def update_readme(readme: Path, result: dict[str, Any], report_name: str) -> None:
+    """Replace the README's end-to-end results block with the numbers from this run."""
+    text = readme.read_text()
+    start, end = text.index(README_START) + len(README_START), text.index(README_END)
+    meta = result["meta"]
+    body = [
+        "",
+        f"Measured {meta['timestamp']} on all {meta['golden_questions']} golden questions. "
+        f"Answer model `{meta['provider']}/{meta['model']}`, judge `{meta['judge']}`. "
+        f"Full per-question report: [`backend/evals/results/{report_name}`](backend/evals/results/{report_name}).",
+        "",
+        *e2e_summary_lines(result["e2e"]["summary"], heading="####"),
+        "",
+    ]
+    readme.write_text(text[:start] + "\n".join(body) + text[end:])
+
+
 def render_markdown(result: dict[str, Any]) -> str:
     meta = result["meta"]
     lines = [
@@ -316,26 +359,7 @@ def render_markdown(result: dict[str, Any]) -> str:
 
     e2e = result.get("e2e")
     if e2e:
-        s = e2e["summary"]
-        cost = "—" if s["avg_cost_usd"] is None else f"${s['avg_cost_usd']:.5f}"
-        lines += [
-            "## End-to-end agent",
-            "",
-            "| Correctness | Faithfulness | Citation precision | Tool selection | p50 / p95 latency | Avg tokens (in / out) | Avg cost / question | Errors |",
-            "|---|---|---|---|---|---|---|---|",
-            f"| {_pct(s['correctness'])} | {_pct(s['faithfulness'])} | {_pct(s['citation_precision'])} | {_pct(s['tool_selection'])} "
-            f"| {s['p50_latency_ms']} / {s['p95_latency_ms']} ms | {s['avg_input_tokens']} / {s['avg_output_tokens']} | {cost} | {s['errors']} |",
-            "",
-            "### By category",
-            "",
-            "| Category | Questions | Correctness | Faithfulness | Citation precision | Tool selection |",
-            "|---|---|---|---|---|---|",
-        ]
-        for name, b in s["by_category"].items():
-            lines.append(
-                f"| {name} | {b['questions']} | {_pct(b['correctness'])} | {_pct(b['faithfulness'])} "
-                f"| {_pct(b['citation_precision'])} | {_pct(b['tool_selection'])} |"
-            )
+        lines += ["## End-to-end agent", "", *e2e_summary_lines(e2e["summary"], heading="###")]
         lines += [
             "",
             "### Per question",
@@ -373,6 +397,7 @@ def main() -> int:
     parser.add_argument("--concurrency", type=int, default=1)
     parser.add_argument("--golden", type=Path, default=GOLDEN_PATH)
     parser.add_argument("--out", type=Path, default=RESULTS_DIR)
+    parser.add_argument("--update-readme", action="store_true", help="write the end-to-end results into README.md")
     parser.add_argument("--min-hit-rate", type=float, help="fail if Hit@k is below this (0-1)")
     parser.add_argument("--min-correctness", type=float, help="fail if answer correctness is below this (0-1)")
     parser.add_argument("--min-faithfulness", type=float, help="fail if faithfulness is below this (0-1)")
@@ -430,6 +455,9 @@ def main() -> int:
     (args.out / f"{stamp}-{label}.md").write_text(markdown)
     (args.out / ("latest-retrieval.md" if args.retrieval_only else "latest.md")).write_text(markdown)
     print(markdown)
+    if args.update_readme and "e2e" in result:
+        update_readme(EVAL_DIR.parents[1] / "README.md", result, f"{stamp}-{label}.md")
+        print("README.md updated with these results.", file=sys.stderr)
 
     failures = []
     hit_rate = result["retrieval"]["summary"][f"hit_at_{args.k}"]

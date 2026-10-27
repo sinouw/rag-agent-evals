@@ -90,7 +90,8 @@ jobs:
         run: |
           uv sync --frozen
           uv run python -m app.ingest
-          uv run python -m evals.run --min-correctness 0.8 --min-faithfulness 0.8 --out "$RUNNER_TEMP/eval"
+          # Add --min-correctness / --min-faithfulness gates once a real baseline exists.
+          uv run python -m evals.run --out "$RUNNER_TEMP/eval"
       - uses: actions/upload-artifact@v4
         if: steps.key.outputs.present == 'true' && always()
         with:

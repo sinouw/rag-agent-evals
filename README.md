@@ -6,7 +6,7 @@ Ask a question about a document collection. The agent searches a vector index, q
 
 The demo corpus is 25 Python Enhancement Proposals (PEPs), which are public domain. Any folder of PDF, Markdown, reStructuredText or text files works.
 
-<!-- SCREENSHOT -->
+> Screenshot: pending (to be taken once an LLM API key is configured).
 
 ## What it does
 
@@ -43,7 +43,18 @@ flowchart LR
 
 ## Eval results
 
-<!-- E2E_RESULTS -->
+### End-to-end agent
+
+<!-- E2E_RESULTS:START -->
+
+> **Pending real run.** These numbers have not been measured yet. Every cell below is a placeholder.
+> Running `./scripts/run-evals.sh` (needs an API key in `.env`) replaces this block with measured results.
+
+| Correctness | Faithfulness | Citation precision | Tool selection | p50 / p95 latency | Avg tokens (in / out) | Avg cost / question | Errors |
+|---|---|---|---|---|---|---|---|
+| pending real run | pending real run | pending real run | pending real run | pending real run | pending real run | pending real run | pending real run |
+
+<!-- E2E_RESULTS:END -->
 
 ### Retrieval
 
@@ -84,10 +95,20 @@ Runs Qdrant as a server, the API (embedding model baked into the image), the UI 
 
 ## Run the evals
 
+One command produces the real end-to-end numbers and writes them into this README:
+
+```bash
+./scripts/run-evals.sh
+```
+
+It reads `GROQ_API_KEY` / `GEMINI_API_KEY` from `.env` and answers with `LLM_PROVIDER` (default Groq). When both keys are set, it uses the other provider as the judge, so a model never grades its own answers. Stop `scripts/dev.sh` first: the embedded index allows one process at a time. Free-tier rate limits can slow the run. The client retries on HTTP 429, and anything that still fails is listed as an error in the report.
+
+Lower-level commands:
+
 ```bash
 cd backend
 uv run python -m evals.run --retrieval-only     # retrieval metrics, no API key
-uv run python -m evals.run                      # full suite: agent + LLM judge
+uv run python -m evals.run                      # full suite: agent + LLM judge (needs a key)
 uv run python -m evals.run --ids q05,q23        # a subset
 ```
 
@@ -103,17 +124,17 @@ Reports go to `backend/evals/results/` as Markdown and JSON. `--min-hit-rate`, `
 ## Tests and CI
 
 ```bash
-cd backend && uv run pytest     # 48 tests: chunking, PDF loading, tools, agent loop, SSE API, tracing, eval metrics
+cd backend && uv run pytest     # 49 tests: chunking, PDF loading, tools, agent loop, SSE API, tracing, eval metrics
 cd frontend && npm run lint && npm run build
 ```
 
-Backend tests use a scripted LLM, a hashing embedder and in-memory Qdrant, so they run offline in seconds.
+Backend tests mock every LLM call with a scripted model, and use a hashing embedder and in-memory Qdrant, so they need no API key and run offline in seconds. This covers the agent loop, the SSE endpoint, tracing, and the eval runner including the judge.
 
 `.github/workflows/ci.yml` runs five jobs:
 
 - **backend**: lint and tests
 - **retrieval eval**: gated on Hit@5 ≥ 0.9, no key needed
-- **agent eval**: runs only when a `GROQ_API_KEY` or `GEMINI_API_KEY` secret is set
+- **agent eval**: makes real LLM calls, so it runs only when a `GROQ_API_KEY` or `GEMINI_API_KEY` repository secret is set; without one it skips
 - **frontend**: lint and build
 - **docker**: builds the Compose images
 

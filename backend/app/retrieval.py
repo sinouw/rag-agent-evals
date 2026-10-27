@@ -161,5 +161,12 @@ def build_store(settings: Settings) -> VectorStore:
         client = QdrantClient(url=settings.qdrant_url)
     else:
         settings.qdrant_path.mkdir(parents=True, exist_ok=True)
-        client = QdrantClient(path=str(settings.qdrant_path))
+        try:
+            client = QdrantClient(path=str(settings.qdrant_path))
+        except RuntimeError as exc:
+            # Embedded mode allows one process at a time (e.g. the dev server holds the lock).
+            raise RuntimeError(
+                f"The local index at {settings.qdrant_path} is in use by another process. "
+                "Stop the running API (scripts/dev.sh) first, or set QDRANT_URL to use a Qdrant server."
+            ) from exc
     return VectorStore(client, settings.collection)

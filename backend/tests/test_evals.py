@@ -84,3 +84,33 @@ async def test_agent_eval_scores_and_renders(indexed, tracing):
     }
     markdown = render_markdown({"meta": meta, "retrieval": retrieval, "e2e": e2e})
     assert "## End-to-end agent" in markdown and "| a | lookup | ✅ | ✅ |" in markdown
+
+
+def test_update_readme_replaces_only_the_marked_block(tmp_path):
+    from evals.run import README_END, README_START, update_readme
+
+    readme = tmp_path / "README.md"
+    readme.write_text(f"# Title\n\n{README_START}\npending real run\n{README_END}\n\n## After\n")
+    by_cat = {
+        "questions": 1,
+        "correctness": 1.0,
+        "faithfulness": 1.0,
+        "citation_precision": None,
+        "tool_selection": None,
+    }
+    summary = {
+        **by_cat,
+        "errors": 0,
+        "p50_latency_ms": 900,
+        "p95_latency_ms": 1500,
+        "avg_input_tokens": 2000,
+        "avg_output_tokens": 80,
+        "avg_cost_usd": 0.0012,
+        "by_category": {"lookup": by_cat},
+    }
+    meta = {"timestamp": "t", "golden_questions": 1, "provider": "p", "model": "m", "judge": "j/m"}
+    update_readme(readme, {"meta": meta, "e2e": {"summary": summary}}, "r.md")
+    text = readme.read_text()
+    assert "pending real run" not in text
+    assert "| 100% | 100% | — | — | 900 / 1500 ms | 2000 / 80 | $0.00120 | 0 |" in text
+    assert text.startswith("# Title") and text.endswith("## After\n")
