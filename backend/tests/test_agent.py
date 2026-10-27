@@ -131,6 +131,6 @@ def test_error_messages_redact_account_ids():
     from app.agent import redact
 
     assert (
-        redact("limit for organization `org_01ke5hsxa5fqram6` reached")
+        redact("limit for organization `org_0000examplefake` reached")
         == "limit for organization `[redacted-id]` reached"
     )
