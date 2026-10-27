@@ -13,6 +13,7 @@ from collections.abc import AsyncIterator, Sequence
 from dataclasses import dataclass, field
 from typing import Any, Protocol
 
+import httpx
 from openai import AsyncOpenAI
 
 
@@ -24,7 +25,7 @@ class ProviderPreset:
 
 
 PROVIDERS: dict[str, ProviderPreset] = {
-    "groq": ProviderPreset("https://api.groq.com/openai/v1", "GROQ_API_KEY", "llama-3.3-70b-versatile"),
+    "groq": ProviderPreset("https://api.groq.com/openai/v1", "GROQ_API_KEY", "openai/gpt-oss-120b"),
     "gemini": ProviderPreset(
         "https://generativelanguage.googleapis.com/v1beta/openai/", "GEMINI_API_KEY", "gemini-2.5-flash"
     ),
@@ -116,7 +117,17 @@ class OpenAICompatibleLLM:
         self.provider = provider
         self.model = model
         self.temperature = temperature
-        self._client = AsyncOpenAI(api_key=api_key, base_url=base_url, max_retries=max_retries, timeout=120)
+        # Counts HTTP 429s so latency measured under provider rate limits can be reported as such.
+        self.rate_limited_responses = 0
+
+        async def count_rate_limits(response: httpx.Response) -> None:
+            if response.status_code == 429:
+                self.rate_limited_responses += 1
+
+        http_client = httpx.AsyncClient(timeout=120, event_hooks={"response": [count_rate_limits]})
+        self._client = AsyncOpenAI(
+            api_key=api_key, base_url=base_url, max_retries=max_retries, timeout=120, http_client=http_client
+        )
 
     async def stream(
         self, messages: Sequence[dict[str, Any]], tools: Sequence[dict[str, Any]] | None = None

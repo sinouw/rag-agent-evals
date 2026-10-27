@@ -1,0 +1,1220 @@
+{
+  "meta": {
+    "timestamp": "2026-10-27 14:47 UTC",
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "k": 5,
+    "documents": 25,
+    "chunks": 1226,
+    "golden_questions": 32,
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "judge": "groq/qwen/qwen3.8-27b",
+    "rate_limited_responses": 50
+  },
+  "retrieval": {
+    "summary": {
+      "questions": 23,
+      "k": 5,
+      "hit_at_1": 0.9565217391304348,
+      "hit_at_3": 1.0,
+      "hit_at_5": 1.0,
+      "mrr": 0.9782608695652174,
+      "recall_at_5": 0.9782608695652174,
+      "evidence_questions": 23,
+      "evidence_hit_at_5": 1.0,
+      "evidence_mrr": 0.7644927536231884,
+      "p50_latency_ms": 51.3
+    },
+    "rows": [
+      {
+        "id": "q01",
+        "category": "lookup",
+        "rank": 1,
+        "evidence_rank": 2,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0008",
+          "pep-0008",
+          "pep-0618",
+          "pep-0618",
+          "pep-0618"
+        ],
+        "latency_ms": 43.8
+      },
+      {
+        "id": "q02",
+        "category": "lookup",
+        "rank": 1,
+        "evidence_rank": 2,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0008",
+          "pep-0008",
+          "pep-0008",
+          "pep-0008",
+          "pep-0008"
+        ],
+        "latency_ms": 51.2
+      },
+      {
+        "id": "q03",
+        "category": "lookup",
+        "rank": 1,
+        "evidence_rank": 2,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0257",
+          "pep-0257",
+          "pep-0008",
+          "pep-0257",
+          "pep-0008"
+        ],
+        "latency_ms": 57.7
+      },
+      {
+        "id": "q04",
+        "category": "lookup",
+        "rank": 1,
+        "evidence_rank": 4,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0343",
+          "pep-0343",
+          "pep-0343",
+          "pep-0343",
+          "pep-0343"
+        ],
+        "latency_ms": 51.7
+      },
+      {
+        "id": "q05",
+        "category": "lookup",
+        "rank": 1,
+        "evidence_rank": 3,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0618",
+          "pep-0618",
+          "pep-0618",
+          "pep-0618",
+          "pep-0618"
+        ],
+        "latency_ms": 52.5
+      },
+      {
+        "id": "q06",
+        "category": "lookup",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0020",
+          "pep-0020",
+          "pep-0020",
+          "pep-0020",
+          "pep-0020"
+        ],
+        "latency_ms": 49.3
+      },
+      {
+        "id": "q07",
+        "category": "lookup",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703"
+        ],
+        "latency_ms": 98.3
+      },
+      {
+        "id": "q08",
+        "category": "lookup",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0518",
+          "pep-0518",
+          "pep-0518",
+          "pep-0518",
+          "pep-0518"
+        ],
+        "latency_ms": 51.3
+      },
+      {
+        "id": "q09",
+        "category": "lookup",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0723",
+          "pep-0723",
+          "pep-0723",
+          "pep-0723",
+          "pep-0723"
+        ],
+        "latency_ms": 51.5
+      },
+      {
+        "id": "q10",
+        "category": "lookup",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0668",
+          "pep-0668",
+          "pep-0668",
+          "pep-0668",
+          "pep-0668"
+        ],
+        "latency_ms": 47.0
+      },
+      {
+        "id": "q11",
+        "category": "lookup",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0657",
+          "pep-0657",
+          "pep-0657",
+          "pep-0657",
+          "pep-0657"
+        ],
+        "latency_ms": 49.9
+      },
+      {
+        "id": "q12",
+        "category": "lookup",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0709",
+          "pep-0709",
+          "pep-0709",
+          "pep-0709",
+          "pep-0709"
+        ],
+        "latency_ms": 49.2
+      },
+      {
+        "id": "q13",
+        "category": "lookup",
+        "rank": 1,
+        "evidence_rank": 2,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0584",
+          "pep-0584",
+          "pep-0584",
+          "pep-0584",
+          "pep-0584"
+        ],
+        "latency_ms": 51.3
+      },
+      {
+        "id": "q14",
+        "category": "lookup",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0526",
+          "pep-0526",
+          "pep-0526",
+          "pep-0526",
+          "pep-0526"
+        ],
+        "latency_ms": 70.0
+      },
+      {
+        "id": "q15",
+        "category": "lookup",
+        "rank": 2,
+        "evidence_rank": 2,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0526",
+          "pep-3107",
+          "pep-0526",
+          "pep-0526",
+          "pep-3107"
+        ],
+        "latency_ms": 63.2
+      },
+      {
+        "id": "q16",
+        "category": "lookup",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0492",
+          "pep-0492",
+          "pep-0492",
+          "pep-0492",
+          "pep-0492"
+        ],
+        "latency_ms": 65.1
+      },
+      {
+        "id": "q17",
+        "category": "lookup",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-3333",
+          "pep-3333",
+          "pep-3333",
+          "pep-3333",
+          "pep-3333"
+        ],
+        "latency_ms": 60.1
+      },
+      {
+        "id": "q18",
+        "category": "lookup",
+        "rank": 1,
+        "evidence_rank": 2,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0380",
+          "pep-0380",
+          "pep-0380",
+          "pep-0380",
+          "pep-0380"
+        ],
+        "latency_ms": 63.3
+      },
+      {
+        "id": "q19",
+        "category": "lookup",
+        "rank": 1,
+        "evidence_rank": 2,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703"
+        ],
+        "latency_ms": 58.1
+      },
+      {
+        "id": "q20",
+        "category": "lookup",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0701",
+          "pep-0701",
+          "pep-0701",
+          "pep-0701",
+          "pep-0701"
+        ],
+        "latency_ms": 44.0
+      },
+      {
+        "id": "q21",
+        "category": "multi_doc",
+        "rank": 1,
+        "evidence_rank": 2,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-3107",
+          "pep-0484",
+          "pep-3107",
+          "pep-0008",
+          "pep-0484"
+        ],
+        "latency_ms": 45.1
+      },
+      {
+        "id": "q22",
+        "category": "multi_doc",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 0.5,
+        "retrieved": [
+          "pep-0604",
+          "pep-0604",
+          "pep-0604",
+          "pep-0604",
+          "pep-0604"
+        ],
+        "latency_ms": 41.4
+      },
+      {
+        "id": "q27",
+        "category": "calculation",
+        "rank": 1,
+        "evidence_rank": 1,
+        "has_evidence": true,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0008",
+          "pep-0008",
+          "pep-0723",
+          "pep-0723",
+          "pep-0572"
+        ],
+        "latency_ms": 46.3
+      }
+    ]
+  },
+  "e2e": {
+    "summary": {
+      "questions": 32,
+      "correctness": 1.0,
+      "faithfulness": 1.0,
+      "citation_precision": 0.9782608695652174,
+      "tool_selection": 0.8571428571428571,
+      "errors": 0,
+      "p50_latency_ms": 10278,
+      "p95_latency_ms": 47898,
+      "avg_input_tokens": 3184,
+      "avg_output_tokens": 271,
+      "avg_cost_usd": 0.0006805499999999999,
+      "total_cost_usd": 0.021777599999999998,
+      "by_category": {
+        "calculation": {
+          "questions": 3,
+          "correctness": 1.0,
+          "faithfulness": 1.0,
+          "citation_precision": 1.0,
+          "tool_selection": 0.6666666666666666
+        },
+        "lookup": {
+          "questions": 20,
+          "correctness": 1.0,
+          "faithfulness": 1.0,
+          "citation_precision": 0.975,
+          "tool_selection": null
+        },
+        "metadata_sql": {
+          "questions": 4,
+          "correctness": 1.0,
+          "faithfulness": 1.0,
+          "citation_precision": null,
+          "tool_selection": 1.0
+        },
+        "multi_doc": {
+          "questions": 2,
+          "correctness": 1.0,
+          "faithfulness": 1.0,
+          "citation_precision": 1.0,
+          "tool_selection": null
+        },
+        "unanswerable": {
+          "questions": 3,
+          "correctness": 1.0,
+          "faithfulness": 1.0,
+          "citation_precision": null,
+          "tool_selection": null
+        }
+      }
+    },
+    "rows": [
+      {
+        "id": "q01",
+        "category": "lookup",
+        "question": "What maximum line length does PEP 8 recommend for code?",
+        "answer": "PEP\u202f8 recommends limiting all lines of code to **a maximum of 79 characters**[S1].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the 79-character limit as recommended by PEP 8, which is directly supported by the retrieved context [S1].",
+        "cited_docs": [
+          "pep-0008"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 1198,
+        "input_tokens": 2790,
+        "output_tokens": 146,
+        "cost_usd": 0.000528,
+        "judge_cost_usd": null,
+        "trace_id": "250cad390c730afffe5c3709c6b566c0"
+      },
+      {
+        "id": "q02",
+        "category": "lookup",
+        "question": "How many spaces per indentation level does the Python style guide recommend?",
+        "answer": "The Python style guide (PEP\u202f8) recommends **using 4 spaces for each indentation level**[S2].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies that the Python style guide recommends 4 spaces per indentation level, which is explicitly stated in the provided context [S2].",
+        "cited_docs": [
+          "pep-0008"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 3920,
+        "input_tokens": 2524,
+        "output_tokens": 135,
+        "cost_usd": 0.00047985,
+        "judge_cost_usd": null,
+        "trace_id": "006e0cb19820f5bfe5e9838c12b82018"
+      },
+      {
+        "id": "q03",
+        "category": "lookup",
+        "question": "Which quoting style should be used around docstrings?",
+        "answer": "Use **triple double\u2011quote** literals for docstrings (e.g. `\"\"\"docstring\"\"\"`).  PEP\u202f257 explicitly states that, for consistency, docstrings should always be written with triple double quotes, and raw triple double quotes (`r\"\"\"\u2026\"\"\"`) may be used when backslashes are needed[S3].  PEP\u202f8 also recommends this to stay consistent with the docstring convention[S1].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies triple double quotes as the standard and raw triple double quotes for backslashes, which aligns with the reference answer and is fully supported by the retrieved context (specifically S3 and S1).",
+        "cited_docs": [
+          "pep-0257",
+          "pep-0008"
+        ],
+        "citation_precision": 0.5,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 3603,
+        "input_tokens": 1927,
+        "output_tokens": 290,
+        "cost_usd": 0.00050655,
+        "judge_cost_usd": null,
+        "trace_id": "6e960c598c31dbba623c3023ec2fc6fd"
+      },
+      {
+        "id": "q04",
+        "category": "lookup",
+        "question": "Which two methods must a context manager provide to be used with the with statement?",
+        "answer": "A context manager must implement the two special methods **`__enter__()`** and **`__exit__()`** so that it can be used with the `with` statement[S1].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the two required methods as __enter__() and __exit__(), which is explicitly supported by the retrieved context in source [S1].",
+        "cited_docs": [
+          "pep-0343"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 2581,
+        "input_tokens": 2329,
+        "output_tokens": 204,
+        "cost_usd": 0.0005023499999999999,
+        "judge_cost_usd": null,
+        "trace_id": "10bf95b92cb6112a56ea0e8f354da7ff"
+      },
+      {
+        "id": "q05",
+        "category": "lookup",
+        "question": "What happens when zip() is called with strict=True and the iterables have different lengths?",
+        "answer": "When `zip()` is called with the keyword\u2011only argument `strict=True`, it checks that all supplied iterables finish at the same time. If any iterable is exhausted before the others, the iterator raises a `ValueError` at the moment iteration would normally stop\u202f\u2014\u202finstead of silently truncating the result.\u202f[S1]",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies that a ValueError is raised when iterables have different lengths with strict=True, and this claim is fully supported by the provided context [S1].",
+        "cited_docs": [
+          "pep-0618"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 7357,
+        "input_tokens": 1869,
+        "output_tokens": 182,
+        "cost_usd": 0.00041684999999999997,
+        "judge_cost_usd": null,
+        "trace_id": "8d67a20f16b3461e05f029492f0e0f99"
+      },
+      {
+        "id": "q06",
+        "category": "lookup",
+        "question": "How many aphorisms does the Zen of Python say Tim Peters channelled, and how many were written down?",
+        "answer": "Tim\u202fPeters \u201cchanneled\u201d **20 aphorisms** for the Zen of Python, but **only 19 of them have been written down**[S1].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the numbers 20 and 19 as stated in the reference, and these facts are directly supported by the retrieved context [S1].",
+        "cited_docs": [
+          "pep-0020"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 14716,
+        "input_tokens": 2207,
+        "output_tokens": 256,
+        "cost_usd": 0.00052305,
+        "judge_cost_usd": null,
+        "trace_id": "bc6a1db1f3a9e1dc4bc7796289dc1598"
+      },
+      {
+        "id": "q07",
+        "category": "lookup",
+        "question": "Which configure option builds CPython without the global interpreter lock?",
+        "answer": "The configure option that builds CPython without the Global Interpreter Lock is:\n\n**`--disable-gil`**[S1]. This flag added to the `configure` script disables the GIL at build time, defining the `Py_GIL_DISABLED` macro and producing a GIL\u2011free interpreter.",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the `--disable-gil` option and the `Py_GIL_DISABLED` macro, both of which are explicitly supported by the provided context in [S1].",
+        "cited_docs": [
+          "pep-0703"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 13669,
+        "input_tokens": 1821,
+        "output_tokens": 189,
+        "cost_usd": 0.0004149,
+        "judge_cost_usd": null,
+        "trace_id": "f0225af6f71d842e2b2372c861d15009"
+      },
+      {
+        "id": "q08",
+        "category": "lookup",
+        "question": "Which table in pyproject.toml stores build-system requirements, and which key is required in it?",
+        "answer": "The build\u2011system requirements are stored in the **`[build-system]`** table of\u202f`pyproject.toml`.  \nWithin that table the only mandatory key is **`requires`**, which must be a list of PEP\u202f508 dependency strings\u202f[S2].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the [build-system] table and the required 'requires' key, and both claims are directly supported by the provided context [S2].",
+        "cited_docs": [
+          "pep-0518"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 10079,
+        "input_tokens": 1989,
+        "output_tokens": 216,
+        "cost_usd": 0.00046034999999999994,
+        "judge_cost_usd": null,
+        "trace_id": "bf18d4717c18f9550d3a1c9dac4d79fe"
+      },
+      {
+        "id": "q09",
+        "category": "lookup",
+        "question": "How does a single-file script mark the start and end of its inline metadata block?",
+        "answer": "A script begins an inline\u2011metadata block with a comment line that starts with `# ///` followed by the metadata type (e.g., `# /// some\u2011toml`).  \nThe block ends with a line that is just `# ///`.  \n\nThus the start marker is **`# /// <type>`** and the end marker is **`# ///`**[S2].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the start marker as `# /// <type>` and the end marker as `# ///`, which aligns with the reference answer and is fully supported by the specification details and examples in context [S2].",
+        "cited_docs": [
+          "pep-0723"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs",
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 3,
+        "latency_ms": 23114,
+        "input_tokens": 3880,
+        "output_tokens": 399,
+        "cost_usd": 0.00088125,
+        "judge_cost_usd": null,
+        "trace_id": "b4235b6d07b2d833820f8582dd028a81"
+      },
+      {
+        "id": "q10",
+        "category": "lookup",
+        "question": "What file marks a Python installation as externally managed so that pip refuses to install into it?",
+        "answer": "The marker is a file named **`EXTERNALLY-MANAGED`** placed in the interpreter\u2019s standard\u2011library directory; its presence tells pip that the installation is externally managed and pip should refuse to install packages into it[S1].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the file name as EXTERNALLY-MANAGED and accurately states it is placed in the standard library directory, both of which are supported by the provided context.",
+        "cited_docs": [
+          "pep-0668"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 9342,
+        "input_tokens": 2181,
+        "output_tokens": 264,
+        "cost_usd": 0.0005251499999999999,
+        "judge_cost_usd": null,
+        "trace_id": "2415bfc31f27659023ad9af0055060da"
+      },
+      {
+        "id": "q11",
+        "category": "lookup",
+        "question": "Which command-line option disables the extra position information that fine-grained error locations add to tracebacks?",
+        "answer": "The command\u2011line option is:\n\n**`-Xno_debug_ranges`** (used as `python -Xno_debug_ranges`).\n\nThis option disables the extra position information that fine\u2011grained error locations would otherwise add to tracebacks[S2].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the command-line option `python -Xno_debug_ranges` as specified in the reference answer, and this fact is explicitly supported by the retrieved context in [S2].",
+        "cited_docs": [
+          "pep-0657"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 19596,
+        "input_tokens": 2277,
+        "output_tokens": 250,
+        "cost_usd": 0.00052905,
+        "judge_cost_usd": null,
+        "trace_id": "138adc423083543c1df40eeadbfc98fb"
+      },
+      {
+        "id": "q12",
+        "category": "lookup",
+        "question": "How much faster did inlining comprehensions make a comprehension microbenchmark and a real-world-derived benchmark?",
+        "answer": "Inlining comprehensions made the micro\u2011benchmark roughly twice as fast (about **1.96\u202f\u00d7** faster) and gave an **\u2248\u202f11\u202f%** speed\u2011up on a real\u2011world\u2011derived benchmark\u202f[S2][S6].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant's answer correctly identifies the ~2x (specifically 1.96x) speedup for the microbenchmark and the 11% speedup for the real-world benchmark, both of which are explicitly supported by the provided context in sources [S2] and [S6].",
+        "cited_docs": [
+          "pep-0709",
+          "pep-0709"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 10350,
+        "input_tokens": 2426,
+        "output_tokens": 316,
+        "cost_usd": 0.0006009,
+        "judge_cost_usd": null,
+        "trace_id": "37b3e014d15781f481316b5d2f36444c"
+      },
+      {
+        "id": "q13",
+        "category": "lookup",
+        "question": "Which operators were added to dict for merging and updating?",
+        "answer": "The PEP added two new operators to the built\u2011in **dict**:\n\n* **`|`** \u2013 a *merge* operator that returns a new dictionary containing the combined key/value pairs.  \n* **`|=`** \u2013 an *update* (augmented\u2011assignment) operator that updates a dictionary in place.\n\nThese operators were introduced in PEP\u202f584 \u201cAdd Union Operators To dict\u201d[S1].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the `|` and `|=` operators as the merge and update operators added to dict, which aligns with the reference answer and is fully supported by the provided context (specifically S1 and S4).",
+        "cited_docs": [
+          "pep-0584"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 13698,
+        "input_tokens": 1988,
+        "output_tokens": 245,
+        "cost_usd": 0.00048195,
+        "judge_cost_usd": null,
+        "trace_id": "eb77aa5937c227a52a69fad3b841fe8a"
+      },
+      {
+        "id": "q14",
+        "category": "lookup",
+        "question": "How do you annotate a class variable, as opposed to an instance variable, in a class body?",
+        "answer": "Use a\u202f`typing.ClassVar` annotation.\n\n```python\nfrom typing import ClassVar\n\nclass MyClass:\n    # class variable\n    count: ClassVar[int] = 0\n\n    # instance variable\n    name: str               # no default, set in __init__\n```\n\n`ClassVar[T]` tells static type checkers that the annotated name is a class\u2011level attribute and should not be set on instances\u202f\u2014\u202fthe normal `T` annotation without `ClassVar` is treated as an instance variable\u202f[ S3 ].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies `typing.ClassVar` as the method to annotate class variables, which aligns with the reference answer, and all specific claims and code examples are supported by the provided context (specifically S1 and S3).",
+        "cited_docs": [
+          "pep-0526"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 14881,
+        "input_tokens": 2178,
+        "output_tokens": 418,
+        "cost_usd": 0.0006402000000000001,
+        "judge_cost_usd": null,
+        "trace_id": "2413c506772f2c54127f6f4a9ab2ab84"
+      },
+      {
+        "id": "q15",
+        "category": "lookup",
+        "question": "Where are function annotations stored at runtime?",
+        "answer": "Function annotations are kept on the function object itself in its\u202f`__annotations__` attribute \u2013 a mutable dictionary that maps each parameter name (and the special key `\"return\"` for the return\u2011value annotation) to the evaluated annotation object.\u202f[S2]",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies that function annotations are stored in the `__annotations__` attribute as a dictionary mapping parameter names and 'return' to their values, which aligns with the reference answer and is fully supported by the provided context [S2].",
+        "cited_docs": [
+          "pep-3107"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 15888,
+        "input_tokens": 2370,
+        "output_tokens": 220,
+        "cost_usd": 0.0005205,
+        "judge_cost_usd": null,
+        "trace_id": "cee6da49b19cc52d1af2781e0a46e2bb"
+      },
+      {
+        "id": "q16",
+        "category": "lookup",
+        "question": "Which two magic methods implement an asynchronous context manager used with async with?",
+        "answer": "The asynchronous context\u2011manager protocol required for `async with` is defined by the two magic methods **`__aenter__`** and **`__aexit__`**[S1].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies `__aenter__` and `__aexit__` as the two magic methods, which aligns with the reference answer and is fully supported by the provided context [S1].",
+        "cited_docs": [
+          "pep-0492"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 13369,
+        "input_tokens": 2167,
+        "output_tokens": 181,
+        "cost_usd": 0.00046080000000000003,
+        "judge_cost_usd": null,
+        "trace_id": "55101ac0a52509a1c2bcb99a8faace10"
+      },
+      {
+        "id": "q17",
+        "category": "lookup",
+        "question": "What two arguments does a WSGI application callable receive?",
+        "answer": "A WSGI application callable is invoked with **two positional arguments**:  \n\n1. **`environ`** \u2013 a dictionary containing the CGI\u2011style environment variables for the request.  \n2. **`start_response`** \u2013 a callable the application uses to begin the HTTP response.\n\nThese are the two arguments the server/gateway must pass to the application object\u202f[S1].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the two arguments (environ dictionary and start_response callable) as stated in the reference, and all details provided are directly supported by the retrieved context [S1].",
+        "cited_docs": [
+          "pep-3333"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 10604,
+        "input_tokens": 2258,
+        "output_tokens": 211,
+        "cost_usd": 0.00049695,
+        "judge_cost_usd": null,
+        "trace_id": "70d3bf75bb005920875aba2c341f9eaf"
+      },
+      {
+        "id": "q18",
+        "category": "lookup",
+        "question": "What syntax does PEP 380 add for a generator to delegate to a subgenerator?",
+        "answer": "PEP\u202f380 adds the **`yield from <expr>`** expression. It lets a generator delegate all its yielding, sending, and returning to another (sub)generator by writing:\n\n```python\nyield from subgenerator(...)\n``` \n\nThis single statement replaces the older two\u2011line loop and also propagates a return value from the subgenerator.\u202f[S5]",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the `yield from <expr>` syntax as per the reference and context, and all additional details regarding delegation and return values are supported by the provided text.",
+        "cited_docs": [
+          "pep-0380"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 8073,
+        "input_tokens": 2122,
+        "output_tokens": 158,
+        "cost_usd": 0.0004368,
+        "judge_cost_usd": null,
+        "trace_id": "91a1f4dee6016a73be8ddab14e1fa15b"
+      },
+      {
+        "id": "q19",
+        "category": "lookup",
+        "question": "Which environment variable can re-enable or disable the GIL at runtime in a free-threaded build?",
+        "answer": "The environment variable is **`PYTHONGIL`** \u2013 setting `PYTHONGIL=0` forces the GIL off and `PYTHONGIL=1` forces it on in a free\u2011threaded (``--disable-gil``) build[S4].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the PYTHONGIL environment variable and accurately describes its behavior (0 to disable, 1 to enable) based on the provided context [S4].",
+        "cited_docs": [
+          "pep-0703"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 14597,
+        "input_tokens": 1842,
+        "output_tokens": 228,
+        "cost_usd": 0.00044730000000000003,
+        "judge_cost_usd": null,
+        "trace_id": "59b90d25fbffd7a75bc7a11ee47cc535"
+      },
+      {
+        "id": "q20",
+        "category": "lookup",
+        "question": "Before PEP 701, what was impossible to do inside the expression part of an f-string?",
+        "answer": "Before PEP\u202f701 you could not use the quote character that delimits the f\u2011string inside the expression portion of the f\u2011string. For example, `f'Magic wand: {bag['wand']}'` raised a `SyntaxError` because the same\u2011type quote inside the braces was disallowed.\u202f[S1]",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies that reusing the delimiting quote character was impossible before PEP 701, which aligns with the reference answer's primary point, and the specific example and error message provided are directly supported by the retrieved context [S1].",
+        "cited_docs": [
+          "pep-0701"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs",
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 3,
+        "latency_ms": 41709,
+        "input_tokens": 5630,
+        "output_tokens": 527,
+        "cost_usd": 0.00123975,
+        "judge_cost_usd": null,
+        "trace_id": "053557979c1199dd92568a214559de95"
+      },
+      {
+        "id": "q21",
+        "category": "multi_doc",
+        "question": "PEP 3107 introduced function annotation syntax. What did PEP 484 later standardise on top of it?",
+        "answer": "PEP\u202f484 built on the annotation syntax introduced by PEP\u202f3107 by defining a **standard type\u2011hinting system** \u2013 a common vocabulary and conventions for using those annotations to specify argument and return types (and the accompanying `typing` module and related tools)[S2].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies that PEP 484 standardized type hints and the typing module on top of PEP 3107's syntax, which aligns with the reference answer and is fully supported by the provided context [S2].",
+        "cited_docs": [
+          "pep-0484"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 10278,
+        "input_tokens": 1837,
+        "output_tokens": 248,
+        "cost_usd": 0.00046155,
+        "judge_cost_usd": null,
+        "trace_id": "c1e46f8663f8d875ea45a824349601c2"
+      },
+      {
+        "id": "q22",
+        "category": "multi_doc",
+        "question": "What is the difference between how PEP 604 and PEP 484 let you write a union of two types?",
+        "answer": "PEP\u202f604 lets you express a union with the **`|` operator**:\n\n```python\ndef f(x: int | str) -> float | str: \u2026\n```\n\nPEP\u202f484 (the original typing proposal) requires the **`typing.Union` generic**:\n\n```python\ndef f(x: typing.Union[int, str]) -> typing.Union[float, str]: \u2026\n```\n\nThus, PEP\u202f604 introduces a concise infix syntax (`X | Y`) that is equivalent to the older `typing.Union[X, Y]` form used by PEP\u202f484[S1][S2].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies that PEP 604 uses the `|` operator while PEP 484 uses `typing.Union`, and all claims are directly supported by the provided context documents [S1] and [S2].",
+        "cited_docs": [
+          "pep-0604",
+          "pep-0604"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 2,
+        "latency_ms": 5289,
+        "input_tokens": 1859,
+        "output_tokens": 343,
+        "cost_usd": 0.0005360999999999999,
+        "judge_cost_usd": null,
+        "trace_id": "657bc883d892c41e9697fce5eb35c5c3"
+      },
+      {
+        "id": "q23",
+        "category": "metadata_sql",
+        "question": "How many of the documents in the corpus have the status Final?",
+        "answer": "22 documents in the corpus have the status **Final**.",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant's answer matches the reference answer of 22, and the context provided (SQL query result showing 22) supports this claim.",
+        "cited_docs": [],
+        "citation_precision": null,
+        "tools_used": [
+          "sql_query"
+        ],
+        "tool_ok": true,
+        "steps": 2,
+        "latency_ms": 2208,
+        "input_tokens": 1154,
+        "output_tokens": 87,
+        "cost_usd": 0.00023835,
+        "judge_cost_usd": null,
+        "trace_id": "ab61a08431ff34d2f9bc3072cb4cb217"
+      },
+      {
+        "id": "q24",
+        "category": "metadata_sql",
+        "question": "Which PEPs in the corpus target Python 3.12?",
+        "answer": "The PEPs that target Python\u202f3.12 are:\n\n- **PEP\u202f695 \u2013 Type Parameter Syntax**  \n- **PEP\u202f701 \u2013 Syntactic formalization of f\u2011strings**  \n- **PEP\u202f709 \u2013 Inlined comprehensions**  \n\nThese are the only entries in the corpus whose `python_version` field is set to\u202f3.12.",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies PEP 695, 701, and 709 as the targets for Python 3.12, which matches the reference answer, and the specific PEP numbers and titles are directly supported by the provided SQL query context.",
+        "cited_docs": [],
+        "citation_precision": null,
+        "tools_used": [
+          "sql_query"
+        ],
+        "tool_ok": true,
+        "steps": 2,
+        "latency_ms": 2199,
+        "input_tokens": 1189,
+        "output_tokens": 222,
+        "cost_usd": 0.00034485,
+        "judge_cost_usd": null,
+        "trace_id": "7455b1fd7ed7185d5d38ae737c08742d"
+      },
+      {
+        "id": "q25",
+        "category": "metadata_sql",
+        "question": "Which document in the collection was created earliest, and on what date?",
+        "answer": "The earliest\u2011created document is **PEP\u202f257 \u2013 \u201cDocstring Conventions\u201d** (doc_id\u202fpep\u20110257), which was created on **2001\u201105\u201129**.",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies PEP 257 and the date 2001-05-29, which matches the reference answer and is fully supported by the provided SQL query context.",
+        "cited_docs": [],
+        "citation_precision": null,
+        "tools_used": [
+          "sql_query"
+        ],
+        "tool_ok": true,
+        "steps": 2,
+        "latency_ms": 6287,
+        "input_tokens": 1189,
+        "output_tokens": 180,
+        "cost_usd": 0.00031335,
+        "judge_cost_usd": null,
+        "trace_id": "ce2ca78597824a1ffd8fef8501e1c44b"
+      },
+      {
+        "id": "q26",
+        "category": "metadata_sql",
+        "question": "Which PEP in the corpus is the longest by word count?",
+        "answer": "The longest PEP in the collection is **PEP\u202f484 \u2013 \u201cType Hints,\u201d** with a word count of\u202f12\u202f938.",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies PEP 484 as the longest PEP, matching the reference answer, and the specific word count provided is directly supported by the retrieved SQL query context.",
+        "cited_docs": [],
+        "citation_precision": null,
+        "tools_used": [
+          "sql_query"
+        ],
+        "tool_ok": true,
+        "steps": 2,
+        "latency_ms": 6467,
+        "input_tokens": 1174,
+        "output_tokens": 182,
+        "cost_usd": 0.0003126,
+        "judge_cost_usd": null,
+        "trace_id": "760f2236f28c336b82535b100f4f8175"
+      },
+      {
+        "id": "q27",
+        "category": "calculation",
+        "question": "PEP 8 sets one maximum line length for code and a lower one for docstrings and comments. What is the difference between the two limits?",
+        "answer": "PEP\u202f8 specifies a **79\u2011character** limit for normal code lines and a **72\u2011character** limit for docstrings and comments, a difference of **7 characters** between the two limits[S1].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the 7-character difference between the 79-character code limit and the 72-character docstring/comment limit, and both specific values are explicitly supported by the provided context [S1].",
+        "cited_docs": [
+          "pep-0008"
+        ],
+        "citation_precision": 1.0,
+        "tools_used": [
+          "search_docs"
+        ],
+        "tool_ok": false,
+        "steps": 2,
+        "latency_ms": 9947,
+        "input_tokens": 2290,
+        "output_tokens": 233,
+        "cost_usd": 0.00051825,
+        "judge_cost_usd": null,
+        "trace_id": "2899b60b06af73a23857df7ecbbcbe7e"
+      },
+      {
+        "id": "q28",
+        "category": "calculation",
+        "question": "How many years apart were PEP 8 and PEP 703 created, comparing their creation years?",
+        "answer": "PEP\u202f8 was created in\u202f2001 and PEP\u202f703 in\u202f2023, so they were created **22\u202fyears apart**.",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies the creation years (2001 and 2023) from the context, calculates the difference as 22 years, and matches the reference answer.",
+        "cited_docs": [],
+        "citation_precision": null,
+        "tools_used": [
+          "sql_query",
+          "calculator"
+        ],
+        "tool_ok": true,
+        "steps": 3,
+        "latency_ms": 4635,
+        "input_tokens": 1863,
+        "output_tokens": 181,
+        "cost_usd": 0.0004152,
+        "judge_cost_usd": null,
+        "trace_id": "ce55720105f01dda747d03558fa04dab"
+      },
+      {
+        "id": "q29",
+        "category": "calculation",
+        "question": "What is the combined word count of the PEPs in the corpus that target Python 3.12, divided by the number of such PEPs (the average)?",
+        "answer": "The average word count of the PEPs that target Python\u202f3.12 is **\u2248\u202f4,714.33 words** (total\u202f14,143 words across 3 PEPs, divided by 3)[sql_query].",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant's answer matches the reference answer's calculation (14143 / 3 \u2248 4714.33) and all factual claims are directly supported by the provided SQL query results and calculator output.",
+        "cited_docs": [],
+        "citation_precision": null,
+        "tools_used": [
+          "sql_query",
+          "calculator"
+        ],
+        "tool_ok": true,
+        "steps": 3,
+        "latency_ms": 4294,
+        "input_tokens": 1891,
+        "output_tokens": 252,
+        "cost_usd": 0.00047264999999999997,
+        "judge_cost_usd": null,
+        "trace_id": "e4e44d272b2faab044e9d6cc29844cd7"
+      },
+      {
+        "id": "q30",
+        "category": "unanswerable",
+        "question": "What is the maximum line length recommended by the Google Python Style Guide?",
+        "answer": "The documents provided do not contain a statement about the maximum line length recommended by the Google Python Style Guide.",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies that the provided documents (which are PEP 8) do not contain information about the Google Python Style Guide, aligning with the reference answer's core point that the corpus lacks the specific document requested.",
+        "cited_docs": [],
+        "citation_precision": null,
+        "tools_used": [
+          "search_docs",
+          "search_docs",
+          "search_docs",
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 5,
+        "latency_ms": 124628,
+        "input_tokens": 18777,
+        "output_tokens": 415,
+        "cost_usd": 0.0031277999999999996,
+        "judge_cost_usd": null,
+        "trace_id": "467a93b0763656130ad6f5c3e855c8d9"
+      },
+      {
+        "id": "q31",
+        "category": "unanswerable",
+        "question": "Which PEP introduced the walrus operator for list slicing in Python 2.7?",
+        "answer": "The documents contain no PEP that added a \u201cwalrus\u201d (`:=`) operator for list slicing in Python\u202f2.7. The walrus operator was introduced later, in Python\u202f3.8, by **PEP\u202f572 \u2013 Assignment Expressions**\u202f[\u200bS1]. No PEP targets Python\u202f2.7 for this feature.",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies that the documents do not support the premise of a walrus operator for Python 2.7 list slicing, and accurately cites PEP 572 as the source for the walrus operator in Python 3.8, which is supported by the provided context.",
+        "cited_docs": [
+          "pep-0572"
+        ],
+        "citation_precision": null,
+        "tools_used": [
+          "search_docs",
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 3,
+        "latency_ms": 47898,
+        "input_tokens": 6590,
+        "output_tokens": 565,
+        "cost_usd": 0.00141225,
+        "judge_cost_usd": null,
+        "trace_id": "fdc189b7cd023ef373669ca458a0801f"
+      },
+      {
+        "id": "q32",
+        "category": "unanswerable",
+        "question": "How many downloads did the dataclasses backport have on PyPI in 2024?",
+        "answer": "The documents do not contain any information about the number of PyPI downloads for the dataclasses backport in\u202f2024.",
+        "correct": true,
+        "faithful": true,
+        "reason": "The assistant correctly identifies that the provided documents do not contain the requested download statistics, which aligns with the reference answer and is supported by the lack of such data in the retrieved context.",
+        "cited_docs": [],
+        "citation_precision": null,
+        "tools_used": [
+          "search_docs",
+          "search_docs",
+          "search_docs",
+          "search_docs"
+        ],
+        "tool_ok": null,
+        "steps": 5,
+        "latency_ms": 85952,
+        "input_tokens": 13286,
+        "output_tokens": 719,
+        "cost_usd": 0.0025321499999999995,
+        "judge_cost_usd": null,
+        "trace_id": "059a0607e535ea3a38387930fbbc65f7"
+      }
+    ]
+  }
+}

@@ -116,3 +116,9 @@ def test_error_messages_redact_key_like_strings():
 
     assert redact("Incorrect API key provided: gsk_abc123***xyz9.") == "Incorrect API key provided: [redacted-key]."
     assert "AIza" not in redact("bad key AIzaSyD-abcdefgh")
+
+
+def test_fullwidth_citation_brackets_are_normalized():
+    from app.agent import normalize_citations
+
+    assert extract_citation_labels(normalize_citations("Raises ValueError【S1】 and 【S2, S3】.")) == ["S1", "S2", "S3"]

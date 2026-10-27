@@ -5,8 +5,9 @@
 #   ./scripts/run-evals.sh --limit 5  # extra args go to `python -m evals.run`
 #
 # Reads GROQ_API_KEY / GEMINI_API_KEY from .env (values are never printed).
-# The answering provider is LLM_PROVIDER (default groq). If both keys are set, the
-# other provider is used as the judge, so the model never grades its own answers.
+# The answering provider is LLM_PROVIDER (default groq, model openai/gpt-oss-120b). If both
+# keys are set, the other provider judges; with only a Groq key, qwen/qwen3.8-27b judges.
+# Either way a model never grades its own answers.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -26,6 +27,10 @@ export LLM_PROVIDER="$provider"
 if [ -z "${JUDGE_PROVIDER:-$(env_value JUDGE_PROVIDER)}" ]; then
   if [ "$provider" = groq ] && has_key GEMINI_API_KEY; then export JUDGE_PROVIDER=gemini; fi
   if [ "$provider" = gemini ] && has_key GROQ_API_KEY; then export JUDGE_PROVIDER=groq; fi
+fi
+# Only one provider available: judge with a different model family on it.
+if [ -z "${JUDGE_PROVIDER:-}" ] && [ -z "${JUDGE_MODEL:-$(env_value JUDGE_MODEL)}" ] && [ "$provider" = groq ]; then
+  export JUDGE_MODEL=qwen/qwen3.8-27b
 fi
 
 cd backend

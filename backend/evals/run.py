@@ -309,6 +309,9 @@ def update_readme(readme: Path, result: dict[str, Any], report_name: str) -> Non
         f"Answer model `{meta['provider']}/{meta['model']}`, judge `{meta['judge']}`. "
         f"Full per-question report: [`backend/evals/results/{report_name}`](backend/evals/results/{report_name}).",
         "",
+        f"Run on Groq's free tier: the provider returned {meta.get('rate_limited_responses', 0)} rate-limit (HTTP 429) "
+        "responses, which the client retried after waiting. Those waits are included in the latency figures.",
+        "",
         *e2e_summary_lines(result["e2e"]["summary"], heading="####"),
         "",
     ]
@@ -326,6 +329,10 @@ def render_markdown(result: dict[str, Any]) -> str:
         f"- Judge model: `{meta.get('judge')}`" if meta.get("judge") else "",
         f"- Embeddings: `{meta['embedding_model']}`, top-k {meta['k']}, {meta['chunks']} chunks from {meta['documents']} documents",
         f"- Golden set: {meta['golden_questions']} questions (`evals/golden.jsonl`)",
+        f"- Provider rate-limit (HTTP 429) responses during the run: {meta['rate_limited_responses']} "
+        "(retried automatically; the waits are included in latency)"
+        if "rate_limited_responses" in meta
+        else None,
         "",
         "## Retrieval",
         "",
@@ -446,6 +453,9 @@ def main() -> int:
             file=sys.stderr,
         )
         result["e2e"] = asyncio.run(agent_eval(agent, judge, items, args.concurrency))
+        meta["rate_limited_responses"] = getattr(agent.llm, "rate_limited_responses", 0) + getattr(
+            judge, "rate_limited_responses", 0
+        )
 
     args.out.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now(UTC).strftime("%Y%m%d-%H%M%S")

@@ -6,7 +6,9 @@ Ask a question about a document collection. The agent searches a vector index, q
 
 The demo corpus is 25 Python Enhancement Proposals (PEPs), which are public domain. Any folder of PDF, Markdown, reStructuredText or text files works.
 
-> Screenshot: pending (to be taken once an LLM API key is configured).
+![The UI answering a question: streamed answer with a citation chip, the expanded source passage, the agent's search call with scored hits, and the request's trace waterfall](docs/screenshot.jpg)
+
+*A real answer from `openai/gpt-oss-120b` on Groq: 1.09 s and 2,152 input / 248 output tokens. The trace shows two LLM calls around one search (query embedding 56 ms, vector search 11 ms). This answer also shows a known weakness: the model stated the 79 − 72 difference without calling the calculator.*
 
 ## What it does
 
@@ -46,14 +48,23 @@ flowchart LR
 ### End-to-end agent
 
 <!-- E2E_RESULTS:START -->
+Measured 2026-10-27 14:47 UTC on all 32 golden questions. Answer model `groq/openai/gpt-oss-120b`, judge `groq/qwen/qwen3.8-27b`. Full per-question report: [`backend/evals/results/20261027-145651-openai_gpt-oss-120b.md`](backend/evals/results/20261027-145651-openai_gpt-oss-120b.md).
 
-> **Pending real run.** These numbers have not been measured yet. Every cell below is a placeholder.
-> Running `./scripts/run-evals.sh` (needs an API key in `.env`) replaces this block with measured results.
+Run on Groq's free tier: the provider returned 50 rate-limit (HTTP 429) responses, which the client retried after waiting. Those waits are included in the latency figures.
 
 | Correctness | Faithfulness | Citation precision | Tool selection | p50 / p95 latency | Avg tokens (in / out) | Avg cost / question | Errors |
 |---|---|---|---|---|---|---|---|
-| pending real run | pending real run | pending real run | pending real run | pending real run | pending real run | pending real run | pending real run |
+| 100% | 100% | 98% | 86% | 10278 / 47898 ms | 3184 / 271 | $0.00068 | 0 |
 
+#### By category
+
+| Category | Questions | Correctness | Faithfulness | Citation precision | Tool selection |
+|---|---|---|---|---|---|
+| calculation | 3 | 100% | 100% | 100% | 67% |
+| lookup | 20 | 100% | 100% | 98% | — |
+| metadata_sql | 4 | 100% | 100% | — | 100% |
+| multi_doc | 2 | 100% | 100% | 100% | — |
+| unanswerable | 3 | 100% | 100% | — | — |
 <!-- E2E_RESULTS:END -->
 
 ### Retrieval
@@ -67,7 +78,14 @@ Measured on the 23 golden questions that name the documents holding the answer (
 
 - *Document*: a chunk from a document that holds the answer is in the top 5.
 - *Answer-bearing chunk*: a top-5 chunk from that document contains the evidence text recorded for the question. This is stricter; MRR 0.76 means the right passage is usually, but not always, ranked first.
-- p50 retrieval latency (query embedding + vector search) was ~180–240 ms on a 2019 Intel MacBook Pro CPU.
+- p50 retrieval latency (query embedding + vector search) measured 51–238 ms across runs on a 2019 Intel MacBook Pro CPU.
+
+**Reading the end-to-end numbers (run of 2026-10-27).**
+
+- I read all 32 answers and agree with each of the judge's verdicts.
+- The one tool-selection miss: on q27 the model stated a 79 − 72 = 7 difference without calling the calculator, despite the prompt asking it to.
+- The one citation outside the expected document: on q03, besides PEP 257, the model also cited PEP 8, which does discuss docstrings.
+- Latency is dominated by the free tier: the 50 rate-limited responses add their waits to p50 and p95. The three unanswerable questions were the slowest (48–125 s), because the agent searched 2–4 times before declining.
 
 **Caveats.** The golden set is small (32 questions) and I wrote it myself after reading the documents, so it is likely easier than real user questions. Each PEP covers one distinct topic, which makes document-level retrieval easy; the answer-bearing-chunk metric is the more informative number. The judge is an LLM, and LLM judges make mistakes; per-question verdicts and reasons are in the report so they can be checked.
 
@@ -81,6 +99,8 @@ This is the path I ran and verified, on macOS (Intel) with Python 3.12 via [uv](
 cp .env.example .env        # then set GROQ_API_KEY and/or GEMINI_API_KEY
 ./scripts/dev.sh            # API on :8000, UI on http://localhost:5173
 ```
+
+If those ports are taken, set `API_PORT` / `WEB_PORT`, e.g. `API_PORT=8011 WEB_PORT=5181 ./scripts/dev.sh`.
 
 The first start indexes the corpus into `data/qdrant` (embedded Qdrant) and `data/metadata.db`. That took about 4–6 minutes on a 2019 Intel MacBook Pro CPU; later starts reuse the index. Without an API key, the API still starts and serves search and health, and the UI shows "LLM not configured".
 
@@ -101,7 +121,7 @@ One command produces the real end-to-end numbers and writes them into this READM
 ./scripts/run-evals.sh
 ```
 
-It reads `GROQ_API_KEY` / `GEMINI_API_KEY` from `.env` and answers with `LLM_PROVIDER` (default Groq). When both keys are set, it uses the other provider as the judge, so a model never grades its own answers. Stop `scripts/dev.sh` first: the embedded index allows one process at a time. Free-tier rate limits can slow the run. The client retries on HTTP 429, and anything that still fails is listed as an error in the report.
+It reads `GROQ_API_KEY` / `GEMINI_API_KEY` from `.env` and answers with `LLM_PROVIDER`: by default Groq, model `openai/gpt-oss-120b`. A model never grades its own answers. When both keys are set, the other provider judges; with only a Groq key, `qwen/qwen3.8-27b` judges. Stop `scripts/dev.sh` first: the embedded index allows one process at a time. Free-tier rate limits can slow the run. The client retries on HTTP 429, and anything that still fails is listed as an error in the report.
 
 Lower-level commands:
 
@@ -124,7 +144,7 @@ Reports go to `backend/evals/results/` as Markdown and JSON. `--min-hit-rate`, `
 ## Tests and CI
 
 ```bash
-cd backend && uv run pytest     # 49 tests: chunking, PDF loading, tools, agent loop, SSE API, tracing, eval metrics
+cd backend && uv run pytest     # 50 tests: chunking, PDF loading, tools, agent loop, SSE API, tracing, eval metrics
 cd frontend && npm run lint && npm run build
 ```
 
@@ -159,5 +179,5 @@ data/corpus/        25 PEPs (public domain / CC0), fetched by scripts/fetch_corp
 ## Limitations and next steps
 
 - Dense retrieval only; adding BM25 hybrid search and a reranker, then measuring them with the same eval, is the obvious next experiment.
-- Cost figures are estimates from a price table in `backend/app/llm.py`; provider prices change.
+- Cost figures are estimates from the price table in `backend/app/llm.py` ($0.15 input / $0.75 output per million tokens for `openai/gpt-oss-120b`). I could not confirm Groq's current price list, so check it before relying on the cost numbers. Judge calls are not included in cost per question.
 - The eval set is small and self-written; growing it with real user questions would make the numbers more meaningful.

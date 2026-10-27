@@ -33,12 +33,14 @@ Tools:
 - search_docs: find passages in the documents. Search before answering any content question; \
 search again with different wording if the first results don't contain the answer.
 - sql_query: metadata across documents (counts, creation dates, statuses, types, Python versions, word counts).
-- calculator: any arithmetic, including date differences. Never do arithmetic in your head.
+- calculator: any arithmetic, including date differences. Never do arithmetic in your head: \
+whenever the answer is a number you derive (a difference, sum, average, count of years), \
+compute it with the calculator, even if it looks trivial.
 
 Rules:
 - Base every factual statement on tool results, and cite the passages you used inline with \
-their source ids, e.g. "... introduced in Python 3.8 [S2]." Facts from sql_query or the \
-calculator need no citation.
+their source ids in square brackets, e.g. "... introduced in Python 3.8 [S2]." Only search_docs \
+results have source ids; facts from sql_query or the calculator need no citation.
 - If the tools don't give you the answer, say that the documents don't say. Do not guess.
 - Be concise: a direct answer first, then brief supporting detail."""
 
@@ -56,6 +58,11 @@ _KEY_LIKE = re.compile(r"\b(gsk_|sk-|AIza)[A-Za-z0-9_\-*]{6,}")
 
 def redact(text: str) -> str:
     return _KEY_LIKE.sub("[redacted-key]", text)
+
+
+def normalize_citations(answer: str) -> str:
+    """Some models (e.g. gpt-oss) write citations with fullwidth brackets: 【S1】 -> [S1]."""
+    return answer.replace("【", "[").replace("】", "]")
 
 
 def extract_citation_labels(answer: str) -> list[str]:
@@ -125,7 +132,7 @@ class Agent:
                     assert end is not None
                     usage.add(end.usage)
                     if not end.tool_calls:
-                        answer = end.text.strip()
+                        answer = normalize_citations(end.text.strip())
                         break
                     if end.text:
                         yield {"type": "discard_text"}
