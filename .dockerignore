@@ -1,0 +1,9 @@
+**/.venv
+**/node_modules
+**/dist
+**/__pycache__
+data/qdrant
+data/*.db
+data/traces.jsonl
+.env
+.git

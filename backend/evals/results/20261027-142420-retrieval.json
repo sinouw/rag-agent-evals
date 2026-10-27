@@ -1,0 +1,346 @@
+{
+  "meta": {
+    "timestamp": "2026-10-27 14:24 UTC",
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "k": 5,
+    "documents": 25,
+    "chunks": 1226,
+    "golden_questions": 32
+  },
+  "retrieval": {
+    "summary": {
+      "questions": 23,
+      "k": 5,
+      "hit_at_1": 0.9565217391304348,
+      "hit_at_3": 1.0,
+      "hit_at_5": 1.0,
+      "mrr": 0.9782608695652174,
+      "recall_at_5": 0.9782608695652174,
+      "p50_latency_ms": 177.1
+    },
+    "rows": [
+      {
+        "id": "q01",
+        "category": "lookup",
+        "rank": 1,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0008",
+          "pep-0008",
+          "pep-0618",
+          "pep-0618",
+          "pep-0618"
+        ],
+        "latency_ms": 87.4
+      },
+      {
+        "id": "q02",
+        "category": "lookup",
+        "rank": 1,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0008",
+          "pep-0008",
+          "pep-0008",
+          "pep-0008",
+          "pep-0008"
+        ],
+        "latency_ms": 155.9
+      },
+      {
+        "id": "q03",
+        "category": "lookup",
+        "rank": 1,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0257",
+          "pep-0257",
+          "pep-0008",
+          "pep-0257",
+          "pep-0008"
+        ],
+        "latency_ms": 188.0
+      },
+      {
+        "id": "q04",
+        "category": "lookup",
+        "rank": 1,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0343",
+          "pep-0343",
+          "pep-0343",
+          "pep-0343",
+          "pep-0343"
+        ],
+        "latency_ms": 157.5
+      },
+      {
+        "id": "q05",
+        "category": "lookup",
+        "rank": 1,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0618",
+          "pep-0618",
+          "pep-0618",
+          "pep-0618",
+          "pep-0618"
+        ],
+        "latency_ms": 195.2
+      },
+      {
+        "id": "q06",
+        "category": "lookup",
+        "rank": 1,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0020",
+          "pep-0020",
+          "pep-0020",
+          "pep-0020",
+          "pep-0020"
+        ],
+        "latency_ms": 273.7
+      },
+      {
+        "id": "q07",
+        "category": "lookup",
+        "rank": 1,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703"
+        ],
+        "latency_ms": 282.0
+      },
+      {
+        "id": "q08",
+        "category": "lookup",
+        "rank": 1,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0518",
+          "pep-0518",
+          "pep-0518",
+          "pep-0518",
+          "pep-0518"
+        ],
+        "latency_ms": 238.0
+      },
+      {
+        "id": "q09",
+        "category": "lookup",
+        "rank": 1,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0723",
+          "pep-0723",
+          "pep-0723",
+          "pep-0723",
+          "pep-0723"
+        ],
+        "latency_ms": 185.4
+      },
+      {
+        "id": "q10",
+        "category": "lookup",
+        "rank": 1,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0668",
+          "pep-0668",
+          "pep-0668",
+          "pep-0668",
+          "pep-0668"
+        ],
+        "latency_ms": 175.8
+      },
+      {
+        "id": "q11",
+        "category": "lookup",
+        "rank": 1,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0657",
+          "pep-0657",
+          "pep-0657",
+          "pep-0657",
+          "pep-0657"
+        ],
+        "latency_ms": 181.2
+      },
+      {
+        "id": "q12",
+        "category": "lookup",
+        "rank": 1,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0709",
+          "pep-0709",
+          "pep-0709",
+          "pep-0709",
+          "pep-0709"
+        ],
+        "latency_ms": 154.4
+      },
+      {
+        "id": "q13",
+        "category": "lookup",
+        "rank": 1,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0584",
+          "pep-0584",
+          "pep-0584",
+          "pep-0584",
+          "pep-0584"
+        ],
+        "latency_ms": 280.1
+      },
+      {
+        "id": "q14",
+        "category": "lookup",
+        "rank": 1,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0526",
+          "pep-0526",
+          "pep-0526",
+          "pep-0526",
+          "pep-0526"
+        ],
+        "latency_ms": 203.5
+      },
+      {
+        "id": "q15",
+        "category": "lookup",
+        "rank": 2,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0526",
+          "pep-3107",
+          "pep-0526",
+          "pep-0526",
+          "pep-3107"
+        ],
+        "latency_ms": 168.6
+      },
+      {
+        "id": "q16",
+        "category": "lookup",
+        "rank": 1,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0492",
+          "pep-0492",
+          "pep-0492",
+          "pep-0492",
+          "pep-0492"
+        ],
+        "latency_ms": 298.6
+      },
+      {
+        "id": "q17",
+        "category": "lookup",
+        "rank": 1,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-3333",
+          "pep-3333",
+          "pep-3333",
+          "pep-3333",
+          "pep-3333"
+        ],
+        "latency_ms": 159.2
+      },
+      {
+        "id": "q18",
+        "category": "lookup",
+        "rank": 1,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0380",
+          "pep-0380",
+          "pep-0380",
+          "pep-0380",
+          "pep-0380"
+        ],
+        "latency_ms": 105.6
+      },
+      {
+        "id": "q19",
+        "category": "lookup",
+        "rank": 1,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703",
+          "pep-0703"
+        ],
+        "latency_ms": 149.8
+      },
+      {
+        "id": "q20",
+        "category": "lookup",
+        "rank": 1,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0701",
+          "pep-0701",
+          "pep-0701",
+          "pep-0701",
+          "pep-0701"
+        ],
+        "latency_ms": 177.1
+      },
+      {
+        "id": "q21",
+        "category": "multi_doc",
+        "rank": 1,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-3107",
+          "pep-0484",
+          "pep-3107",
+          "pep-0008",
+          "pep-0484"
+        ],
+        "latency_ms": 113.3
+      },
+      {
+        "id": "q22",
+        "category": "multi_doc",
+        "rank": 1,
+        "recall": 0.5,
+        "retrieved": [
+          "pep-0604",
+          "pep-0604",
+          "pep-0604",
+          "pep-0604",
+          "pep-0604"
+        ],
+        "latency_ms": 147.0
+      },
+      {
+        "id": "q27",
+        "category": "calculation",
+        "rank": 1,
+        "recall": 1.0,
+        "retrieved": [
+          "pep-0008",
+          "pep-0008",
+          "pep-0723",
+          "pep-0723",
+          "pep-0572"
+        ],
+        "latency_ms": 355.6
+      }
+    ]
+  }
+}

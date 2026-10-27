@@ -1,0 +1,13 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+node_modules/
+dist/
+data/qdrant/
+data/*.db
+data/*.tmp
+data/traces.jsonl
+.DS_Store
